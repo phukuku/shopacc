@@ -230,9 +230,9 @@
             <i class="fas fa-check-circle verified"></i>
         </span>
     </div>
-
+<!-- https://www.facebook.com/100052288892328 -->
     <div class="seller-social">
-        <a href="https://www.facebook.com/100052288892328"
+        <a href="#"
            target="_blank"
            class="social-btn facebook">
             <i class="fab fa-facebook-f"></i>
@@ -243,8 +243,8 @@
            class="social-btn zalo">
             Zalo
         </a>
-
-        <a href="https://m.me/100052288892328"
+<!-- https://m.me/100052288892328 -->
+        <a href="#"
            target="_blank"
            class="social-btn messenger">
             <i class="fab fa-facebook-messenger"></i>
