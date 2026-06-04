@@ -33,29 +33,7 @@
                     </ul>
                 </li>
 
-                <!-- <li class="submenu">
-                    <a href="javascript:void(0);"><img src="{{ asset('assets/img/icons/product.svg') }}"
-                            alt="img"><span>Dịch vụ</span><span class="menu-arrow"></span></a>
-                    <ul>
-                        <li>
-                        
-                        </li>
-                        <li></li>
-                    </ul>
-                </li> -->
-<!-- 
-                <li class="submenu">
-                    <a href="javascript:void(0);"><img src="{{ asset('assets/img/icons/product.svg') }}"
-                            alt="img"><span>Gói dịch vụ</span><span class="menu-arrow"></span></a>
-                    <ul>
-                        <li><a href="{{ route('admin.packages.index') }}"
-                                class="{{ request()->routeIs('admin.packages.index') ? 'active' : '' }}">Danh sách gói
-                                dịch vụ</a></li>
-                        <li><a href="{{ route('admin.packages.create') }}"
-                                class="{{ request()->routeIs('admin.packages.create') ? 'active' : '' }}">Thêm gói dịch
-                                vụ mới</a></li>
-                    </ul>
-                </li> -->
+
 
                 <li class="submenu">
                     <a href="javascript:void(0);"><img src="{{ asset('assets/img/icons/users1.svg') }}"

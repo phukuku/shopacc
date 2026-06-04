@@ -58,8 +58,8 @@
     position: absolute;
     top: 10px;
     left: 10px;
-    background: linear-gradient(135deg, var(--primary-light), var(--primary-color));
-    color: white;
+    background: #DDF6D9;
+    color: #2E9E44;
     padding: 5px 10px;
     border-radius: 20px;
     font-size: 1.4rem;

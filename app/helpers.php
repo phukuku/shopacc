@@ -79,8 +79,8 @@ function display_hanh_tinh($planet)
 function display_dang_ky($planet)
 {
     return match ($planet) {
-        'real' => 'Thật',
-        'virtual' => 'Ảo',
+        'real' => 'Google - Trắng thông tin',
+        'virtual' => 'Garena',
         default => 'Không xác định',
     };
 }

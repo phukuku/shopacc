@@ -31,12 +31,7 @@
                             </div>
 
                             <div class="info-content">
-                                <div class="info-row">
-                                    <div class="info-label">
-                                        <i class="fa-solid fa-id-card me-2"></i> ID tài khoản
-                                    </div>
-                                    <div class="info-value">{{ $user->id }}</div>
-                                </div>
+
 
                                 <div class="info-row">
                                     <div class="info-label">

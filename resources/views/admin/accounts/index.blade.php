@@ -43,13 +43,11 @@
                                         </label>
                                     </th>
                                     <th>ID</th>
+                                    <th>Mã acc</th>
                                     <th>Danh mục</th>
-                                    <th>Tên tài khoản</th>
                                     <th>Giá tiền</th>
-                                    <th>Trạng thái</th>
-                                    <th>Máy chủ</th>
-                                    <th>Loại đăng ký</th>
-                                    <th>Hành tinh</th>
+                                    <th>Trạng thái</th>                              
+                                    <th>Đăng nhập bằng</th>
                                     <th>Ảnh đại diện</th>
                                     <th>Thao tác</th>
                                 </tr>
@@ -64,30 +62,21 @@
                                             </label>
                                         </td>
                                         <td>{{ $key + 1 }}</td>
+                                        <td class="text-bolds">{{ $account->account_name }}</td>
                                         <td>
                                             <a
                                                 href="{{ route('admin.categories.edit', ['category' => $account->category->id]) }}">{{ $account->category->name }}</a>
                                         </td>
-                                        <td class="text-bolds">{{ $account->account_name }}</td>
-                                        <td>{{ number_format($account->price) }} VNĐ</td>
+                                      
+                                        <td>{{ ($account->price) }} </td>
                                         <td>
                                             <span
                                                 class="badges {{ $account->status === 'available' ? 'bg-lightgreen' : 'bg-lightred' }}">
                                                 {{ $account->status === 'available' ? 'Chưa bán' : 'Đã bán' }}
                                             </span>
                                         </td>
-                                        <td>Server {{ $account->server }}</td>
-                                        <td>{{ $account->registration_type === 'real' ? 'Thật' : 'Ảo' }}</td>
-                                        <td>
-                                            @php
-                                                $planetNames = [
-                                                    'earth' => 'Trái Đất',
-                                                    'namek' => 'Namek',
-                                                    'xayda' => 'Xayda',
-                                                ];
-                                            @endphp
-                                            {{ $planetNames[$account->planet] }}
-                                        </td>
+                                      
+                                        <td>{{ $account->registration_type === 'real' ? 'Google - Trắng thông tin' : 'Garena' }}</td>
                                         <td>
                                             <img src="{{ asset($account->thumb) }}" alt="{{ $account->account_name }}"
                                                 class="img-thumbnail" style="max-width: 100px;">

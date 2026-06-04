@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright (c) 2025 FPT University
  *
@@ -8,6 +9,7 @@
  */
 
 namespace App\Http\Controllers\User;
+
 use App\Http\Controllers\Controller;
 use App\Models\Category;
 use App\Models\GameAccount;
@@ -30,19 +32,33 @@ class GameCategoryController extends Controller
         if ($request->hasAny(['code', 'price_range', 'status', 'planet', 'registration', 'server'])) {
             // Filter by code/ID
             if ($request->filled('code')) {
-                $accounts->where('id', $request->code);
+                $accounts->where(function ($query) use ($request) {
+                    $query->where('account_name', 'LIKE', '%' . $request->code . '%')
+                        ->orWhere('id', 'LIKE', '%' . $request->code . '%');
+                });
             }
 
-            // Filter by price range
+            // // Filter by price range
+            // if ($request->filled('price_range')) {
+            //     $range = explode('-', $request->price_range);
+            //     if (count($range) == 2) {
+            //         $accounts->whereBetween('price', $range);
+            //     } else {
+            //         $accounts->where('price', '>=', $range[0]);
+            //     }
+            // }
             if ($request->filled('price_range')) {
                 $range = explode('-', $request->price_range);
-                if (count($range) == 2) {
-                    $accounts->whereBetween('price', $range);
+
+                if (count($range) === 2) {
+                    $accounts->whereBetween('price', [
+                        (int) $range[0],
+                        (int) $range[1]
+                    ]);
                 } else {
-                    $accounts->where('price', '>=', $range[0]);
+                    $accounts->where('price', '>=', (int) $range[0]);
                 }
             }
-
             // Filter by status
             if ($request->filled('status')) {
                 $accounts->where('status', $request->status);
@@ -62,7 +78,6 @@ class GameCategoryController extends Controller
             if ($request->filled('server')) {
                 $accounts->where('server', $request->input('server'));
             }
-
         }
         $accounts = $accounts->orderBy('id', 'DESC')->get();
         return view('user.category.show', compact('category', 'accounts'));

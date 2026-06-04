@@ -18,13 +18,10 @@ class GameAccount extends Model
     protected $fillable = [
         'game_category_id',
         'account_name',
-        'password',
         'price',
         'status',
         'server',
         'registration_type',
-        'planet',
-        'earring',
         'note',
         'thumb',
         'images'

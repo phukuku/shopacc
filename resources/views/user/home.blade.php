@@ -99,30 +99,7 @@
         </div>
     </div>
 
-    <!-- Menu Transaction -->
-    <section class="menu special-menu">
-        <div class="container">
-            <header class="menu__header">
-                <h2 class="menu__header__title">Giao Dịch Nhanh</h2>
-            </header>
-            <div class="transaction__list">
-                <a href="{{ route('profile.deposit-atm') }}" class="transaction__item">
-                    <div class="transaction__icon">
-                        <img src="https://i.imgur.com/cZ8R4uz.png" alt="Nạp thẻ" class="transaction__img" />
-                    </div>
-                    <p class="text text__transaction__item">NẠP TIỀN</p>
-                </a>
-                <a href="/profile" class="transaction__item">
-                    <div class="transaction__icon">
-                        <img src="https://i.imgur.com/R40n5E3.png" alt="Tài khoản" class="transaction__img" />
-                    </div>
-                    <p class="text text__transaction__item">TÀI KHOẢN</p>
-                </a>
-              
-              
-            </div>
-        </div>
-    </section>
+
 
     <!-- Menu mục game -->
     <section class="menu">
@@ -146,7 +123,65 @@
         </div>
     </section>
 
-   
+<section class="menu special-menu">
+    <div class="container">
+        <header class="menu__header">
+            <h2 class="menu__header__title">Dịch vụ</h2>
+        </header>
+
+        <div class="transaction__list" style="display:flex;justify-content:space-between;align-items:center;">
+
+            <a href="#" class="transaction__item" style="width:25%;text-align:center;background:none;box-shadow:none;border:none;">
+                <div class="transaction__icon">
+                    <img src="https://nhanff.com/images/cate-ff.webp"
+                         alt="Free Fire"
+                         class="transaction__img"
+                         style="width:45px;height:45px;border-radius:50%;">
+                </div>
+                <p class="text text__transaction__item" style="font-size:11px;margin-top:5px;">
+                    FREE FIRE
+                </p>
+            </a>
+
+            <a href="#" class="transaction__item" style="width:25%;text-align:center;background:none;box-shadow:none;border:none;">
+                <div class="transaction__icon">
+                    <img src="https://cdn-www.bluestacks.com/bs-images/34f479426e2671b12e7418f06397708a.png"
+                         alt="Liên Quân"
+                         class="transaction__img"
+                         style="width:45px;height:45px;border-radius:50%;">
+                </div>
+                <p class="text text__transaction__item" style="font-size:11px;margin-top:5px;">
+                    LIÊN QUÂN
+                </p>
+            </a>
+
+            <a href="#" class="transaction__item" style="width:25%;text-align:center;background:none;box-shadow:none;border:none;">
+                <div class="transaction__icon">
+                    <img src="https://cdn-icons-png.flaticon.com/512/733/733547.png"
+                         alt="Facebook"
+                         class="transaction__img"
+                         style="width:45px;height:45px;border-radius:50%;">
+                </div>
+                <p class="text text__transaction__item" style="font-size:11px;margin-top:5px;">
+                    FACEBOOK
+                </p>
+            </a>
+
+            <a href="#" class="transaction__item" style="width:25%;text-align:center;background:none;box-shadow:none;border:none;">
+                <div class="transaction__icon">
+                    <img src="https://cdn-icons-png.flaticon.com/512/3046/3046121.png"
+                         alt="TikTok"
+                         class="transaction__img"
+                         style="width:45px;height:45px;border-radius:50%;">
+                </div>
+                <p class="text text__transaction__item" style="font-size:11px;margin-top:5px;">
+                    TIKTOK
+                </p>
+            </a>
+
+        </div>
+    </div>
+</section>
 
     <!-- Welcome Modal HTML -->
     @if (config_get('welcome_modal', false))
@@ -157,8 +192,7 @@
                     <button class="welcome-modal__close">&times;</button>
                 </div>
                 <div class="welcome-modal__body">
-                    <img src="{{ config_get('site_logo') }}" alt="{{ config_get('site_description') }}"
-                        class="welcome-modal__icon">
+          
 
                     <p>Chào mừng bạn đến với <b>{{ config_get('site_name') }}</b>!</p>
                     <p>{{ config_get('site_description') }}</p>

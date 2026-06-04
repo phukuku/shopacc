@@ -16,11 +16,7 @@
                         enctype="multipart/form-data">
                         @csrf
                         @method('PUT')
-                        @if ($account->status == 'sold' && $account->buyer_id)
-                            <h4 class="text-danger">Tài khoản này đã được bán cho <a
-                                    href="{{ route('admin.users.edit', $account->buyer_id) }}" target="_blank"
-                                    class="text-bold">{{ $account->buyer->username }}</a></h4>
-                        @endif
+                  
                         <div class="row">
                             <div class="col-lg-6 col-sm-6 col-12">
                                 <div class="form-group">
@@ -41,7 +37,7 @@
                             </div>
                             <div class="col-lg-6 col-sm-6 col-12">
                                 <div class="form-group">
-                                    <label>Tên tài khoản <span class="text-danger">*</span></label>
+                                    <label>Mã acc <span class="text-danger">*</span></label>
                                     <input type="text" name="account_name"
                                         value="{{ old('account_name', $account->account_name) }}"
                                         class="form-control @error('account_name') is-invalid @enderror">
@@ -50,22 +46,24 @@
                                     @enderror
                                 </div>
                             </div>
+                 
                             <div class="col-lg-6 col-sm-6 col-12">
                                 <div class="form-group">
-                                    <label>Mật khẩu <span class="text-danger">*</span></label>
-                                    <input type="text" name="password" value="{{ old('password', $account->password) }}"
-                                        class="form-control @error('password') is-invalid @enderror">
-                                    @error('password')
+                                    <label>Giá tiền <span class="text-danger">*</span></label>
+                                    <input type="" name="price" value="{{ old('price', $account->price) }}"
+                                        class="form-control @error('price') is-invalid @enderror">
+                                    @error('price')
                                         <div class="invalid-feedback">{{ $message }}</div>
                                     @enderror
                                 </div>
                             </div>
-                            <div class="col-lg-6 col-sm-6 col-12">
+
+                          <div class="col-lg-6 col-sm-6 col-12">
                                 <div class="form-group">
-                                    <label>Giá tiền <span class="text-danger">*</span></label>
-                                    <input type="number" name="price" value="{{ old('price', $account->price) }}"
-                                        class="form-control @error('price') is-invalid @enderror">
-                                    @error('price')
+                                    <label>Giá cao <span class="text-danger">*</span></label>
+                                    <input type="" name="server" value="{{ old('server', $account->server) }}"
+                                        class="form-control @error('server') is-invalid @enderror">
+                                    @error('server')
                                         <div class="invalid-feedback">{{ $message }}</div>
                                     @enderror
                                 </div>
@@ -86,16 +84,7 @@
                                     @enderror
                                 </div>
                             </div>
-                            <div class="col-lg-6 col-sm-6 col-12">
-                                <div class="form-group">
-                                    <label>Máy chủ <span class="text-danger">*</span></label>
-                                    <input type="number" name="server" value="{{ old('server', $account->server) }}"
-                                        class="form-control @error('server') is-invalid @enderror">
-                                    @error('server')
-                                        <div class="invalid-feedback">{{ $message }}</div>
-                                    @enderror
-                                </div>
-                            </div>
+  
                             <div class="col-lg-6 col-sm-6 col-12">
                                 <div class="form-group">
                                     <label>Loại đăng ký</label>
@@ -103,49 +92,20 @@
                                         class="select @error('registration_type') is-invalid @enderror">
                                         <option value="virtual"
                                             {{ old('registration_type', $account->registration_type) == 'virtual' ? 'selected' : '' }}>
-                                            Ảo</option>
+                                            Garena</option>
                                         <option value="real"
                                             {{ old('registration_type', $account->registration_type) == 'real' ? 'selected' : '' }}>
-                                            Thật</option>
+                                            Google - Trắng thông tin</option>
+
+
+                                      
                                     </select>
                                     @error('registration_type')
                                         <div class="invalid-feedback">{{ $message }}</div>
                                     @enderror
                                 </div>
                             </div>
-                            <div class="col-lg-6 col-sm-6 col-12">
-                                <div class="form-group">
-                                    <label>Hành tinh</label>
-                                    <select name="planet" class="select @error('planet') is-invalid @enderror">
-                                        <option value="earth"
-                                            {{ old('planet', $account->planet) == 'earth' ? 'selected' : '' }}>Trái đất
-                                        </option>
-                                        <option value="namek"
-                                            {{ old('planet', $account->planet) == 'namek' ? 'selected' : '' }}>Namek
-                                        </option>
-                                        <option value="xayda"
-                                            {{ old('planet', $account->planet) == 'xayda' ? 'selected' : '' }}>Xayda
-                                        </option>
-                                    </select>
-                                    @error('planet')
-                                        <div class="invalid-feedback">{{ $message }}</div>
-                                    @enderror
-                                </div>
-                            </div>
-                            <div class="col-lg-6 col-sm-6 col-12">
-                                <div class="form-group">
-                                    <label>Bông tai</label>
-                                    <select name="earring" class="select @error('earring') is-invalid @enderror">
-                                        <option value="1"
-                                            {{ old('earring', $account->earring) == 1 ? 'selected' : '' }}>Có</option>
-                                        <option value="0"
-                                            {{ old('earring', $account->earring) == 0 ? 'selected' : '' }}>Không</option>
-                                    </select>
-                                    @error('earring')
-                                        <div class="invalid-feedback">{{ $message }}</div>
-                                    @enderror
-                                </div>
-                            </div>
+
                             <div class="col-lg-12">
                                 <div class="form-group">
                                     <label>Ảnh đại diện</label>

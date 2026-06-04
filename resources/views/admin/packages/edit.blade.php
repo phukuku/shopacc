@@ -1,4 +1,4 @@
-@extends('layouts.admin.app')
+<!-- @extends('layouts.admin.app')
 @section('title', $title)
 @section('content')
     <div class="page-wrapper">
@@ -135,4 +135,4 @@
             updateEstimatedTimeVisibility();
         });
     </script>
-@endpush
+@endpush -->

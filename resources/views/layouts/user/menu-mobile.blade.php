@@ -14,14 +14,8 @@
                 <span>Tài khoản</span>
             </a>
         </li>
-        <li class="menu-mobile__item">
-            <a href="{{ route('random.show-all') }}"
-                class="menu-mobile__link {{ request()->routeIs('random*') ? 'active' : '' }}">
-                <i class="fas fa-random"></i>
-                <span>Random</span>
-            </a>
-        </li>
-    
+
+
         <li class="menu-mobile__item">
             <a href="{{ route('profile.index') }}"
                 class="menu-mobile__link {{ request()->routeIs('profile*') ? 'active' : '' }}">
@@ -45,35 +39,35 @@
             <h3 class="mobile-overlay-menu__section-title">Tài khoản</h3>
             <ul class="mobile-overlay-menu__links">
                 @guest
-                    <li>
-                        <a href="{{ route('login') }}" class="mobile-overlay-menu__link">
-                            <i class="fas fa-sign-in-alt"></i> Đăng nhập
-                        </a>
-                    </li>
-                    <li>
-                        <a href="{{ route('register') }}" class="mobile-overlay-menu__link">
-                            <i class="fas fa-user-plus"></i> Đăng ký
-                        </a>
-                    </li>
+                <li>
+                    <a href="{{ route('login') }}" class="mobile-overlay-menu__link">
+                        <i class="fas fa-sign-in-alt"></i> Đăng nhập
+                    </a>
+                </li>
+                <li>
+                    <a href="{{ route('register') }}" class="mobile-overlay-menu__link">
+                        <i class="fas fa-user-plus"></i> Đăng ký
+                    </a>
+                </li>
                 @else
-                    <li>
-                        <a href="{{ route('profile.index') }}" class="mobile-overlay-menu__link">
-                            <i class="fas fa-user-circle"></i> {{ Auth::user()->username }}
-                        </a>
-                    </li>
-                    <li>
-                        <a href="{{ route('profile.deposit-atm') }}" class="mobile-overlay-menu__link">
-                            <i class="fas fa-wallet"></i> Số dư: {{ number_format(Auth::user()->balance) }}đ
-                        </a>
-                    </li>
-                    <li>
-                        <form method="POST" action="{{ route('logout') }}">
-                            @csrf
-                            <button type="submit" class="mobile-overlay-menu__link mobile-overlay-menu__button">
-                                <i class="fas fa-sign-out-alt"></i> Đăng xuất
-                            </button>
-                        </form>
-                    </li>
+                <li>
+                    <a href="{{ route('profile.index') }}" class="mobile-overlay-menu__link">
+                        <i class="fas fa-user-circle"></i> {{ Auth::user()->username }}
+                    </a>
+                </li>
+                <li>
+                    <a href="{{ route('profile.deposit-atm') }}" class="mobile-overlay-menu__link">
+                        <i class="fas fa-wallet"></i> Số dư: {{ number_format(Auth::user()->balance) }}đ
+                    </a>
+                </li>
+                <li>
+                    <form method="POST" action="{{ route('logout') }}">
+                        @csrf
+                        <button type="submit" class="mobile-overlay-menu__link mobile-overlay-menu__button">
+                            <i class="fas fa-sign-out-alt"></i> Đăng xuất
+                        </button>
+                    </form>
+                </li>
                 @endguest
             </ul>
         </div>
@@ -84,13 +78,16 @@
                     <a href="{{ route('category.show-all') }}" class="mobile-overlay-menu__link">
                         <i class="fas fa-gamepad"></i> Tài khoản Game
                     </a>
+
                 </li>
+
                 <li>
-                    <a href="{{ route('random.show-all') }}" class="mobile-overlay-menu__link">
-                        <i class="fas fa-random"></i> Random Account
-                    </a>
+                    @if (Auth::check() && Auth()->user()->role == 'admin')
+                    <a href="{{ route('admin.index') }}" target="_blank" class="mobile-overlay-menu__link">
+                        <i class="fas fa-gamepad"></i> ADMIN PANEL</a>
+                    @endif
+
                 </li>
-          
             </ul>
         </div>
     </div>

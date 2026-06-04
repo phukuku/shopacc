@@ -260,17 +260,25 @@
   text-align: center;
 }
 
+.card-note {
+  
+  text-align: center;
+  color: #333;
+  font-weight: 700;
+  font-size: 1.5rem;
+  padding: 15px 0 ;
+}
 .card-price {
   display: flex;
   align-items: center;
   color: var(--primary-color);
-  font-weight: 700;
+  font-weight: 600;
   font-size: 1.5rem;
   padding: 8px 0;
 }
 
 .action-btn {
-  padding: 12px 25px;
+
   border-radius: var(--border-radius-pill);
   font-size: 1.5rem;
   font-weight: 700;

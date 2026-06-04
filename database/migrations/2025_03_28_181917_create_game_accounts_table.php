@@ -26,8 +26,6 @@ return new class extends Migration {
             $table->enum('status', ['available', 'sold'])->default('available'); // Trạng thái
             $table->integer('server'); // Máy chủ (1-13 hoặc tên)
             $table->enum('registration_type', ['virtual', 'real']); // Đăng ký (Ảo/Thật)
-            $table->enum('planet', ['earth', 'namek', 'xayda']); // Hành tinh
-            $table->boolean('earring')->default(false);
             $table->foreignId('buyer_id')->nullable()->constrained('users')->nullOnDelete()->cascadeOnDelete(); // Người mua (FK users)
             $table->text('note')->nullable(); // Ghi chú (Nếu có)
             $table->text('thumb'); // List of images

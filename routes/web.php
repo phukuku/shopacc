@@ -91,12 +91,12 @@ Route::prefix('account')->name('account.')->group(function () {
 // });
 
 // Routes for random categories
-Route::prefix('random')->name('random.')->group(function () {
-    Route::get('/', [RandomCategoryController::class, 'showAll'])->name('show-all');
-    Route::get('/account/{id}', [RandomAccountController::class, 'show'])->name('account.show');
-    Route::post('/account/{id}/purchase', [RandomAccountController::class, 'purchase'])->name('account.purchase');
-    Route::get('/{slug}', [RandomCategoryController::class, 'index'])->name('index');
-});
+// Route::prefix('random')->name('random.')->group(function () {
+//     Route::get('/', [RandomCategoryController::class, 'showAll'])->name('show-all');
+//     Route::get('/account/{id}', [RandomAccountController::class, 'show'])->name('account.show');
+//     Route::post('/account/{id}/purchase', [RandomAccountController::class, 'purchase'])->name('account.purchase');
+//     Route::get('/{slug}', [RandomCategoryController::class, 'index'])->name('index');
+// });
 
 // Discount code routes
 Route::post('/discount-code/validate', [DiscountCodeController::class, 'validateCode'])->name('discount.validate');

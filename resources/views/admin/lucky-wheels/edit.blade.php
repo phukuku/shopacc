@@ -1,4 +1,4 @@
-@extends('layouts.admin.app')
+<!-- @extends('layouts.admin.app')
 @section('title', $title)
 @push('css')
     <style>
@@ -197,7 +197,7 @@
                                 </div>
                             </div>
 
-                            <!-- Phần cấu hình phần thưởng -->
+                          
                             <div class="col-lg-12 mt-3">
                                 <div class="card">
                                     <div class="card-header">
@@ -302,8 +302,8 @@
             </div>
         </div>
     </div>
-@endsection
-
+@endsection -->
+<!-- 
 @push('scripts')
     <script src="https://cdn.ckeditor.com/ckeditor5/41.1.0/classic/ckeditor.js"></script>
     <script>
@@ -400,4 +400,4 @@
             }
         });
     </script>
-@endpush
+@endpush -->

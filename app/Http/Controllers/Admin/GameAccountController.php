@@ -44,12 +44,12 @@ class GameAccountController extends Controller
             $request->validate([
                 'game_category_id' => 'required|exists:game_categories,id',
                 'account_name' => 'required|string|max:255',
-                'password' => 'required|string|max:255',
-                'price' => 'required|numeric|min:0',
-                'server' => 'required|integer',
+               // 'password' => 'required|string|max:255',
+                'price' => 'required|string|max:255',
+                'server' => 'required|string|max:255',
                 'registration_type' => 'required|in:virtual,real',
-                'planet' => 'required|in:earth,namek,xayda',
-                'earring' => 'boolean',
+                 //'planet' => 'required|in:earth,namek,xayda',
+                //  'earring' => 'boolean',
                 'note' => 'nullable|string',
                 'thumb' => 'required|image|mimes:jpeg,png,jpg,gif',
                 'images.*' => 'nullable|image|mimes:jpeg,png,jpg,gif',
@@ -102,13 +102,13 @@ class GameAccountController extends Controller
         try {
             $request->validate([
                 'game_category_id' => 'required|exists:game_categories,id',
-                'account_name' => 'required|string|max:255',
-                'password' => 'required|string|max:255',
-                'price' => 'required|numeric|min:0',
-                'server' => 'required|integer',
+                'account_name' => 'required|string|max:255',  //mã acc
+                //'password' => 'required|string|max:255',
+                'price' => 'required|string|max:255',
+                'server' => 'required|string|max:255',
                 'registration_type' => 'required|in:virtual,real',
-                'planet' => 'required|in:earth,namek,xayda',
-                'earring' => 'boolean',
+               // 'planet' => 'required|in:earth,namek,xayda',
+                // 'earring' => 'boolean',
                 'note' => 'nullable|string',
                 'thumb' => 'nullable|image|mimes:jpeg,png,jpg,gif',
                 'images.*' => 'nullable|image|mimes:jpeg,png,jpg,gif'

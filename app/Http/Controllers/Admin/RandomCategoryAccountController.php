@@ -92,7 +92,7 @@ class RandomCategoryAccountController extends Controller
                 $accountData = [
                     'random_category_id' => $data['random_category_id'],
                     'account_name' => trim($parts[0]),
-                    'password' => trim($parts[1]),
+                    // 'password' => trim($parts[1]),
                     'server' => $data['server'],
                     'price' => $data['price'],
                     'status' => 'available',
@@ -142,7 +142,7 @@ class RandomCategoryAccountController extends Controller
             $request->validate([
                 'random_category_id' => 'required|exists:random_categories,id',
                 'account_name' => 'nullable|string|max:100',
-                'password' => 'nullable|string|max:100',
+                //'password' => 'nullable|string|max:100',
                 'price' => 'required|numeric|min:0',
                 'server' => 'required|integer|min:1',
                 'note' => 'nullable|string',

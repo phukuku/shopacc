@@ -22,7 +22,7 @@
                                 <h2 class="category__title">{{ strtoupper($category->name) }}</h2>
                                 <p class="category__desc">Tổng tài khoản: {{ number_format($category->allAccount) }}</p>
                                 <p class="category__desc">Acc đã bán: {{ number_format($category->soldCount) }}</p>
-                                <p class="text category__action">Mua ngay</p>
+                                <p class="text category__action">Xem ngay</p>
                             </a>
                         @endif
                     @endforeach

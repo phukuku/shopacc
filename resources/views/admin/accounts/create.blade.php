@@ -34,7 +34,7 @@
                             </div>
                             <div class="col-lg-6 col-sm-6 col-12">
                                 <div class="form-group">
-                                    <label>Tên tài khoản <span class="text-danger">*</span></label>
+                                    <label>Mã acc<span class="text-danger">*</span></label>
                                     <input type="text" name="account_name" value="{{ old('account_name') }}"
                                         class="form-control @error('account_name') is-invalid @enderror">
                                     @error('account_name')
@@ -42,26 +42,29 @@
                                     @enderror
                                 </div>
                             </div>
+
                             <div class="col-lg-6 col-sm-6 col-12">
                                 <div class="form-group">
-                                    <label>Mật khẩu <span class="text-danger">*</span></label>
-                                    <input type="text" name="password" value="{{ old('password') }}"
-                                        class="form-control @error('password') is-invalid @enderror">
-                                    @error('password')
-                                        <div class="invalid-feedback">{{ $message }}</div>
-                                    @enderror
-                                </div>
-                            </div>
-                            <div class="col-lg-6 col-sm-6 col-12">
-                                <div class="form-group">
-                                    <label>Giá tiền <span class="text-danger">*</span></label>
-                                    <input type="number" name="price" value="{{ old('price') ?? 0 }}"
+                                    <label>Giá bán <span class="text-danger">*</span></label>
+                                    <input type="" name="price" value="{{ old('price')  }}"
                                         class="form-control @error('price') is-invalid @enderror">
                                     @error('price')
                                         <div class="invalid-feedback">{{ $message }}</div>
                                     @enderror
                                 </div>
                             </div>
+                            
+                            <div class="col-lg-6 col-sm-6 col-12">
+                                <div class="form-group">
+                                    <label>Giá cao <span class="text-danger">*</span></label>
+                                    <input type="" name="server" value="{{ old('server') }}"
+                                        class="form-control @error('server') is-invalid @enderror">
+                                    @error('server')
+                                        <div class="invalid-feedback">{{ $message }}</div>
+                                    @enderror
+                                </div>
+                            </div>
+
                             <div class="col-lg-6 col-sm-6 col-12">
                                 <div class="form-group">
                                     <label>Trạng thái</label>
@@ -76,59 +79,24 @@
                                     @enderror
                                 </div>
                             </div>
+
                             <div class="col-lg-6 col-sm-6 col-12">
                                 <div class="form-group">
-                                    <label>Máy chủ <span class="text-danger">*</span></label>
-                                    <input type="number" name="server" value="{{ old('server') ?? 13 }}"
-                                        class="form-control @error('server') is-invalid @enderror">
-                                    @error('server')
-                                        <div class="invalid-feedback">{{ $message }}</div>
-                                    @enderror
-                                </div>
-                            </div>
-                            <div class="col-lg-6 col-sm-6 col-12">
-                                <div class="form-group">
-                                    <label>Loại đăng ký</label>
+                                    <label>Đăng nhập bằng</label>
                                     <select name="registration_type"
                                         class="select @error('registration_type') is-invalid @enderror">
-                                        <option value="virtual"
-                                            {{ old('registration_type') == 'virtual' ? 'selected' : '' }}>Ảo</option>
+                                       
                                         <option value="real" {{ old('registration_type') == 'real' ? 'selected' : '' }}>
-                                            Thật</option>
+                                            Google - Trắng thông tin</option>
+                                         <option value="virtual"
+                                            {{ old('registration_type') == 'virtual' ? 'selected' : '' }}>Garena</option>
                                     </select>
                                     @error('registration_type')
                                         <div class="invalid-feedback">{{ $message }}</div>
                                     @enderror
                                 </div>
                             </div>
-                            <div class="col-lg-6 col-sm-6 col-12">
-                                <div class="form-group">
-                                    <label>Hành tinh</label>
-                                    <select name="planet" class="select @error('planet') is-invalid @enderror">
-                                        <option value="earth" {{ old('planet') == 'earth' ? 'selected' : '' }}>Trái đất
-                                        </option>
-                                        <option value="namek" {{ old('planet') == 'namek' ? 'selected' : '' }}>Namek
-                                        </option>
-                                        <option value="xayda" {{ old('planet') == 'xayda' ? 'selected' : '' }}>Xayda
-                                        </option>
-                                    </select>
-                                    @error('planet')
-                                        <div class="invalid-feedback">{{ $message }}</div>
-                                    @enderror
-                                </div>
-                            </div>
-                            <div class="col-lg-6 col-sm-6 col-12">
-                                <div class="form-group">
-                                    <label>Bông tai</label>
-                                    <select name="earring" class="select @error('earring') is-invalid @enderror">
-                                        <option value="1" {{ old('earring') == 1 ? 'selected' : '' }}>Có</option>
-                                        <option value="0" {{ old('earring') == 0 ? 'selected' : '' }}>Không</option>
-                                    </select>
-                                    @error('earring')
-                                        <div class="invalid-feedback">{{ $message }}</div>
-                                    @enderror
-                                </div>
-                            </div>
+                         
                             <div class="col-lg-12">
                                 <div class="form-group">
                                     <label>Ảnh đại diện</label>
