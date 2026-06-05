@@ -141,6 +141,8 @@ INSERT INTO `configs` (`id`, `key`, `value`, `created_at`, `updated_at`) VALUES
 (34, 'payment.bank.active', '1', '2025-04-07 07:25:37', '2025-04-07 07:25:37'),
 (35, 'payment.momo.active', '1', '2025-04-07 07:25:37', '2025-04-07 07:25:37'),
 (36, 'login_social.google.active', '1', '2025-04-07 07:25:37', '2025-04-07 07:25:37'),
+(37, 'login_social.google.client_id', '695655624016-tnn916t7g53oqulsiq0d9vvn7bof1568.apps.googleusercontent.com', '2025-04-07 07:25:37', '2025-04-07 07:25:37'),
+(38, 'login_social.google.client_secret', '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', '2025-04-07 07:25:37', '2025-04-07 07:25:37'),
 (39, 'login_social.google.redirect', 'http://localhost:8000/auth/google/callback', '2025-04-07 07:25:37', '2025-04-07 07:25:37'),
 (40, 'login_social.facebook.active', '1', '2025-04-07 07:25:37', '2025-04-07 07:25:37'),
 (41, 'login_social.facebook.client_id', '713944317580357', '2025-04-07 07:25:37', '2025-04-07 07:25:37'),

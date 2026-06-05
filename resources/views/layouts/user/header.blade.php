@@ -26,7 +26,8 @@
             <a href="{{ route('category.show-all') }}"
                 class="text menu__item {{ request()->routeIs('category.*') ? 'active' : '' }}">Nick game</a>
 
-      
+             <a href="{{ route('account') }}"
+                class="text menu__item {{ request()->routeIs('account') || request()->routeIs('account.*') ? 'active' : '' }}">Tìm acc</a>
 
             @if (Auth::check() && Auth()->user()->role == 'admin')
                 <a href="{{ route('admin.index') }}" target="_blank" class="text menu__item">ADMIN PANEL</a>

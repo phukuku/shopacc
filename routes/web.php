@@ -83,7 +83,10 @@ Route::prefix('category')->name('category.')->group(function () {
 Route::prefix('account')->name('account.')->group(function () {
     Route::get('/{id}', [GameAccountController::class, 'show'])->name(name: 'show');
     Route::post('/{id}/purchase', [GameAccountController::class, 'purchase'])->name('purchase');
+    
 });
+Route::get('/account', [GameAccountController::class, 'showAllAcc'])
+    ->name('account');
 // Route::prefix('service')->name('service.')->group(function () {
 //     Route::get('/', [GameServiceController::class, 'showAll'])->name('show-all');
 //     Route::get('/{slug}', [GameServiceController::class, 'show'])->name('show');

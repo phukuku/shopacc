@@ -30,7 +30,16 @@ class GameAccountController extends Controller
         return view("user.account.detail", compact('account', 'images'));
     }
 
+public function showAllAcc()
+{
+    $title = 'Tất cả tài khoản game';
 
+    $accounts = GameAccount::with(['category'])
+        ->orderBy('id', 'DESC')
+        ->get();
+
+    return view('user.account.show-all', compact('title', 'accounts'));
+}
     public function purchase(Request $request, $id)
     {
         try {

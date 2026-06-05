@@ -1,10 +1,3 @@
-{{-- /**
-* Copyright (c) 2025 FPT University
-*
-* @author Phạm Hoàng Tuấn
-* @email phamhoangtuanqn@gmail.com
-* @facebook fb.com/phamhoangtuanqn
-*/ --}}
 
 @extends('layouts.user.app')
 
@@ -38,8 +31,8 @@
 
                     <img id="mainImage"
                         src="{{ $allImages[0] }}"
-                        class="detail__main-image">
-
+                        class="detail__main-image"
+                         onclick="openGallery()">
                     <button class="slider-btn next" onclick="changeSlide(1)">
                         ❯
                     </button>
@@ -255,6 +248,34 @@
         </div>
     </div>
 </div>
+
+
+<div id="galleryModal" class="gallery-modal">
+    <div class="gallery-content">
+
+        <button class="gallery-close" onclick="closeGallery()">
+            ✕
+        </button>
+
+        <div class="gallery-thumbs">
+            @foreach($allImages as $image)
+                <img src="{{ $image }}">
+            @endforeach
+        </div>
+
+    </div>
+</div>
+<script>
+function openGallery() {
+    document.getElementById('galleryModal').style.display = 'block';
+    document.body.style.overflow = 'hidden';
+}
+
+function closeGallery() {
+    document.getElementById('galleryModal').style.display = 'none';
+    document.body.style.overflow = 'auto';
+}
+</script>
 <script>
 function showInstallmentModal() {
     document.getElementById('installmentModal').style.display = 'flex';
@@ -264,7 +285,6 @@ function closeInstallmentModal() {
     document.getElementById('installmentModal').style.display = 'none';
 }
 </script>
-
 
 @push('scripts')
 <script>
