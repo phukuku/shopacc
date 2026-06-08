@@ -31,7 +31,6 @@ class GameAccountController extends Controller
 
         return view("user.account.detail", compact('account', 'images'));
     }
-
     public function showAllAcc(Request $request)
     {
         $title = 'Tất cả tài khoản game';
@@ -83,6 +82,8 @@ class GameAccountController extends Controller
 
         return view('user.account.show-all', compact('title', 'accounts'));
     }
+
+
     public function purchase(Request $request, $id)
     {
         try {
