@@ -5,11 +5,14 @@
     border-top:1px solid rgba(255,255,255,.08);
 ">
 
-
+<!-- <a href="/" class="footer__logo">
+                    <img src="{{ config_get('site_logo_footer') }}" alt="{{ config_get('site_name') }}" height="40"
+                        width="200">
+                </a> -->
     <!-- Tên Shop -->
     <h2 style="
         margin:0;
-        font-size:42px;
+        font-size:25px;
         font-weight:800;
         color:#ffffff;
         text-transform:uppercase;
@@ -26,7 +29,7 @@
         font-size:18px;
         font-weight:500;
     ">
-        Thu Acc Free Fire, Liên Quân Giá Cao • Zalo: 0774.412.304
+        Thu Mua Acc Free Fire, Liên Quân Giá Cao • Zalo: 0774.412.304
     </p>
 
     <!-- Social -->
@@ -36,8 +39,7 @@
         gap:18px;
     ">
 
-        <!-- Facebook https://www.facebook.com/hoangthekhangnew-->
-        <a href="https://www.facebook.com/hoangthekhangnew"
+        <a href="https://www.facebook.com/shopkhangphu"
            target="_blank"
            style="
                 width:58px;
@@ -76,25 +78,16 @@
 
     </div>
 
-    <!-- Hotline -->
-    <div style="
-        margin-top:25px;
-        color:#cbd5e1;
-        font-size:15px;
-    ">
-        <i style="color:#fbbf24;" class="fas fa-phone-alt"></i>
-        Hotline: 0774 412 304
-    </div>
 
     <!-- Copyright -->
-    <!-- <div style="
+    <div style="
         margin-top:25px;
         padding-top:20px;
         border-top:1px solid rgba(255,255,255,.08);
         color:#94a3b8;
         font-size:14px;
     ">
-        © 2025 SHOP KHANG PHÚ - All Rights Reserved
-    </div> -->
+        © 2026 SHOP KHANG PHÚ - All Rights Reserved
+    </div>
 
 </footer>

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright (c) 2025 FPT University
  *
@@ -8,6 +9,7 @@
  */
 
 namespace App\Http\Controllers\User;
+
 use App\Http\Controllers\Controller;
 
 use App\Models\GameAccount;
@@ -30,16 +32,57 @@ class GameAccountController extends Controller
         return view("user.account.detail", compact('account', 'images'));
     }
 
-public function showAllAcc()
-{
-    $title = 'Tất cả tài khoản game';
+    public function showAllAcc(Request $request)
+    {
+        $title = 'Tất cả tài khoản game';
 
-    $accounts = GameAccount::with(['category'])
-        ->orderBy('id', 'DESC')
-        ->get();
+        $accounts = GameAccount::with('category');
 
-    return view('user.account.show-all', compact('title', 'accounts'));
-}
+        // Mặc định chỉ hiện acc chưa bán
+        if (!$request->filled('status')) {
+            $accounts->where('status', 'available');
+        }
+
+        // Tìm kiếm theo mã acc hoặc nội dung note
+        if ($request->filled('code')) {
+            $accounts->where(function ($query) use ($request) {
+                $query->where('account_name', 'LIKE', '%' . $request->code . '%')
+                    ->orWhere('note', 'LIKE', '%' . $request->code . '%');
+            });
+        }
+
+        // Lọc giá
+        if ($request->filled('price_range')) {
+            $range = explode('-', $request->price_range);
+
+            if (count($range) === 2) {
+                $accounts->whereBetween('price', [
+                    (int) $range[0],
+                    (int) $range[1]
+                ]);
+            } else {
+                $accounts->where('price', '>=', (int) $range[0]);
+            }
+        }
+
+        // Sắp xếp
+        if ($request->filled('sort')) {
+
+            if ($request->sort == 'oldest') {
+                $accounts->orderBy('id', 'ASC');
+            } else {
+                $accounts->orderBy('id', 'DESC');
+            }
+        } else {
+
+            // Mặc định mới nhất
+            $accounts->orderBy('id', 'DESC');
+        }
+
+        $accounts = $accounts->get();
+
+        return view('user.account.show-all', compact('title', 'accounts'));
+    }
     public function purchase(Request $request, $id)
     {
         try {
@@ -55,53 +98,7 @@ public function showAllAcc()
             $discountAmount = 0;
             $discountCodeController = new DiscountCodeController();
 
-            // Check for discount code if provided
-            // if ($request->filled('discount_code')) {
-            //     $discountCode = DiscountCode::where('code', $request->discount_code)
-            //         ->where('is_active', '1')
-            //         ->first();
-
-            //     if ($discountCode) {
-            //         // Calculate discount
-            //         if ($discountCode->discount_type === 'percentage') {
-            //             $discountAmount = ($account->price * $discountCode->discount_value) / 100;
-            //             // Apply max discount if set
-            //             if ($discountCode->max_discount_value && $discountAmount > $discountCode->max_discount_value) {
-            //                 $discountAmount = $discountCode->max_discount_value;
-            //             }
-            //         } else {
-            //             $discountAmount = $discountCode->discount_value;
-            //         }
-
-            //         // Calculate final price
-            //         $finalPrice = $account->price - $discountAmount;
-            //         if ($finalPrice < 0) {
-            //             $finalPrice = 0;
-            //         }
-
-            //         // Apply discount code
-            //         // if ($discountCode) {
-            //         //     // Update usage count directly in database
-            //         //     DB::table('discount_codes')
-            //         //         ->where('id', $discountCode->id)
-            //         //         ->increment('usage_count');
-
-            //         //     // Record usage details
-            //         //     DB::table('discount_code_usages')->insert([
-            //         //         'discount_code_id' => $discountCode->id,
-            //         //         'user_id' => $user->id,
-            //         //         'context' => 'account',
-            //         //         'item_id' => $account->id,
-            //         //         'original_price' => $account->price,
-            //         //         'discounted_price' => $finalPrice,
-            //         //         'discount_amount' => $discountAmount,
-            //         //         'used_at' => now(),
-            //         //         'created_at' => now(),
-            //         //         'updated_at' => now()
-            //         //     ]);
-            //         // }
-            //     }
-            // }
+            
 
             if ($user->balance < $finalPrice) {
                 DB::rollBack();
@@ -151,7 +148,6 @@ public function showAllAcc()
                 ],
                 'redirect_url' => route('profile.purchased-accounts')
             ]);
-
         } catch (\Exception $e) {
             DB::rollBack();
             return response()->json([

@@ -29,24 +29,15 @@ class GameCategoryController extends Controller
         }
 
         // Apply filters if any are set
-        if ($request->hasAny(['code', 'price_range', 'status', 'planet', 'registration', 'server'])) {
+        if ($request->hasAny(['code', 'price_range', 'status', 'server'])) {
             // Filter by code/ID
             if ($request->filled('code')) {
                 $accounts->where(function ($query) use ($request) {
                     $query->where('account_name', 'LIKE', '%' . $request->code . '%')
-                        ->orWhere('id', 'LIKE', '%' . $request->code . '%');
+                        ->orWhere('note', 'LIKE', '%' . $request->code . '%');
                 });
             }
 
-            // // Filter by price range
-            // if ($request->filled('price_range')) {
-            //     $range = explode('-', $request->price_range);
-            //     if (count($range) == 2) {
-            //         $accounts->whereBetween('price', $range);
-            //     } else {
-            //         $accounts->where('price', '>=', $range[0]);
-            //     }
-            // }
             if ($request->filled('price_range')) {
                 $range = explode('-', $request->price_range);
 
@@ -59,27 +50,23 @@ class GameCategoryController extends Controller
                     $accounts->where('price', '>=', (int) $range[0]);
                 }
             }
-            // Filter by status
-            if ($request->filled('status')) {
-                $accounts->where('status', $request->status);
-            }
-
-            // Filter by planet
-            if ($request->filled('planet')) {
-                $accounts->where('planet', $request->planet);
-            }
-
-            // Filter by registration type
-            if ($request->filled('registration')) {
-                $accounts->where('registration_type', $request->registration);
-            }
-
-            // Filter by server
-            if ($request->filled('server')) {
-                $accounts->where('server', $request->input('server'));
-            }
+        
         }
-        $accounts = $accounts->orderBy('id', 'DESC')->get();
+                // Sắp xếp
+        if ($request->filled('sort')) {
+
+            if ($request->sort == 'oldest') {
+                $accounts->orderBy('id', 'ASC');
+            } else {
+                $accounts->orderBy('id', 'DESC');
+            }
+        } else {
+
+            // Mặc định mới nhất
+            $accounts->orderBy('id', 'DESC');
+        }
+        
+        $accounts = $accounts->get();
         return view('user.category.show', compact('category', 'accounts'));
     }
 

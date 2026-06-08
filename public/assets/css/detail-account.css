@@ -4,7 +4,7 @@
     position: fixed;
     inset: 0;
     z-index: 9999;
-    background: rgba(0,0,0,.95);
+    background: rgba(0, 0, 0, .95);
     overflow-y: auto;
 }
 
@@ -59,99 +59,155 @@
 }
 
 /* nut tra gop */
-
-.installment-modal .modal__header h3{
-    margin:0;
-    font-size:18px;
-    font-weight:700;
-    color:#fff;
-    text-transform:uppercase;
+.installment-modal .modal__header h3 {
+    margin: 0;
+    font-size: 18px;
+    font-weight: 700;
+    color: #fff;
+    text-transform: uppercase;
 }
 
-.installment-modal .modal__close:hover{
-    opacity:.8;
-
-    
-}
-.seller-box{
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
-    padding:15px;
-    border-top:1px solid #e5e5e5;
+.installment-modal .modal__close:hover {
+    opacity: 0.8;
 }
 
-.seller-info{
-    display:flex;
-    align-items:center;
-    gap:10px;
+/* Seller Box */
+.seller-box {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  
 }
 
-.seller-avatar{
-    width:45px;
-    height:45px;
-    border-radius:50%;
-    object-fit:cover;
+.seller-info {
+    display: flex;
+    align-items: center;
+    gap: 10px;
 }
 
-.seller-name{
-    display:flex;
-    align-items:center;
-    gap:5px;
-    font-size:16px;
-    color:#333;
+.seller-avatar {
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    object-fit: cover;
+    flex-shrink: 0;
 }
 
-.verified{
-    color:#1877f2;
+.seller-name {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    font-size: 16px;
+    font-weight: 500;
+    color: #333;
+    white-space: nowrap;
 }
 
-.seller-social{
-    display:flex;
-    gap:8px;
+.verified {
+    color: #1877f2;
+    font-size: 15px;
 }
 
-.social-btn{
-    width:40px;
-    height:40px;
-    border:1px solid #ddd;
-    border-radius:10px;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    text-decoration:none;
-    background:#fff;
+/* Social Buttons */
+.seller-social {
+    display: flex;
+    align-items: center;
+    gap: 8px;
 }
 
-.facebook i{
-    color:#1877f2;
-    font-size:20px;
+.social-btn {
+    width: 50px;
+    height: 50px;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    background: #fff;
+    transition: all 0.25s ease;
 }
 
-.messenger i{
-    color:#00B2FF;
-    font-size:20px;
+.social-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.15);
 }
 
-.zalo{
-    color:#0068ff;
-    font-weight:600;
-    font-size:14px;
+/* Facebook */
+.facebook i {
+    color: #1877f2;
+    font-size: 30px;
+}
+
+/* Messenger */
+.messenger i {
+    color: #00B2FF;
+    font-size: 30px;
+}
+
+/* Zalo */
+.social-btn.zalo {
+    color: #0068ff;
+    font-weight: 800;
+    font-size: 20px;
+    text-decoration: none;
 }
 /* end tra gop*/
 
 
 
-@media (max-width:480px){
-    .seller-info{
-        flex-direction:column;
-        text-align:center;
+@media (max-width: 480px) {
+
+    .seller-box {
+        gap: 8px;
     }
 
-    .seller-name{
-        white-space:normal;
+    .seller-info {
+        display: flex;
+        align-items: center;
+        flex-direction: row;
+        gap: 6px;
+        flex: 1;
+    }
+
+    .seller-avatar {
+        width: 28px;
+        height: 28px;
+        flex-shrink: 0;
+    }
+
+    .seller-name {
+        font-size: 11px;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+    }
+
+    .verified {
+        font-size: 11px;
+    }
+
+    .seller-social {
+        gap: 4px;
+        flex-shrink: 0;
+    }
+
+    .social-btn {
+        width: 32px;
+        height: 32px;
+        border-radius: 8px;
+    }
+
+    .facebook i,
+    .messenger i {
+        font-size: 18px;
+    }
+
+    .social-btn.zalo {
+        font-size: 11px;
+        font-weight: 700;
     }
 }
+
 #installmentModal {
     display: none;
     position: fixed !important;
@@ -183,49 +239,49 @@
 
 /* /  zalo ho tro */
 
-.modal__btn--zalo{
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    gap:8px;
-    background:#0068ff;
-    color:#fff;
-    text-decoration:none;
-    border-radius:8px;
-    padding:12px 20px;
-    font-weight:600;
-    border:none;
-    cursor:pointer;
+.modal__btn--zalo {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    background: #0068ff;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 8px;
+    padding: 12px 20px;
+    font-weight: 600;
+    border: none;
+    cursor: pointer;
 }
 
-.modal__btn--zalo:hover{
-    background:#0052cc;
-    color:#fff;
+.modal__btn--zalo:hover {
+    background: #0052cc;
+    color: #fff;
 }
 
 
 /* Detail Back */
-.detail__back{
-    margin-bottom:20px;
+.detail__back {
+    margin-bottom: 20px;
 }
 
-.detail__back a{
-    display:inline-flex;
-    align-items:center;
-    gap:8px;
-    color:#1e88e5;
-    font-size:16px;
-    font-weight:600;
-    text-decoration:none;
-    transition:all .2s ease;
+.detail__back a {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    color: #1e88e5;
+    font-size: 16px;
+    font-weight: 600;
+    text-decoration: none;
+    transition: all .2s ease;
 }
 
-.detail__back a:hover{
-    color:#1565c0;
+.detail__back a:hover {
+    color: #1565c0;
 }
 
-.detail__back i{
-    font-size:13px;
+.detail__back i {
+    font-size: 13px;
 }
 
 /* Detail Page Styles */
@@ -291,6 +347,7 @@
     font-weight: 700;
     color: var(--accent-color);
 }
+
 .detail__viewer {
     position: relative;
     margin-bottom: 12px;
@@ -364,75 +421,76 @@
 .detail__thumb.active {
     border-color: #2563eb;
 }
-.detail__content{
-    display:flex;
-    gap:25px;
-    align-items:flex-start;
+
+.detail__content {
+    display: flex;
+    gap: 25px;
+    align-items: flex-start;
 }
 
-.detail__left{
-    width:58%;
+.detail__left {
+    width: 58%;
 }
 
-.detail__right{
-    width:42%;
-    top:20px;
-    
+.detail__right {
+    width: 42%;
+    top: 20px;
+
 }
 
-.detail__main-image{
-    width:100%;
-    max-height:500px;
-    object-fit:contain;
-    border-radius:12px;
-    background:#f5f5f5;
+.detail__main-image {
+    width: 100%;
+    max-height: 500px;
+    object-fit: contain;
+    border-radius: 12px;
+    background: #f5f5f5;
 }
 
-.detail__thumbs{
-    display:flex;
-    gap:10px;
-    margin-top:10px;
-    overflow-x:auto;
+.detail__thumbs {
+    display: flex;
+    gap: 10px;
+    margin-top: 10px;
+    overflow-x: auto;
 }
 
-.detail__thumb{
-    width:90px;
-    height:70px;
-    object-fit:cover;
-    border-radius:8px;
-    cursor:pointer;
+.detail__thumb {
+    width: 90px;
+    height: 70px;
+    object-fit: cover;
+    border-radius: 8px;
+    cursor: pointer;
 }
 
-.detail__info{
-    background:#fff;
-    border-radius:12px;
-    padding:20px;
-    margin-bottom:15px;
-    box-shadow:0 2px 10px rgba(0,0,0,.08);
+.detail__info {
+    background: #fff;
+    border-radius: 12px;
+    padding: 20px;
+    margin-bottom: 15px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, .08);
 }
 
-.detail__actions{
-    background:#fff;
-    border-radius:12px;
-    padding:20px;
-    box-shadow:0 2px 10px rgba(0,0,0,.08);
+.detail__actions {
+    background: #fff;
+    border-radius: 12px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, .08);
 }
 
-.detail__btn{
-    width:100%;
-    margin-bottom:10px;
+.detail__btn {
+    width: 100%;
+    margin-bottom: 10px;
 }
 
-@media(max-width:992px){
-    .detail__content{
-        flex-direction:column;
+@media(max-width:992px) {
+    .detail__content {
+        flex-direction: column;
     }
 
     .detail__left,
-    .detail__right{
-        width:100%;
+    .detail__right {
+        width: 100%;
     }
 }
+
 /* Action Buttons */
 .detail__actions {
     display: flex;
@@ -440,14 +498,16 @@
     gap: 15px;
     margin-bottom: 30px;
 }
+
 .detail__purchased-title {
     color: var(--danger);
     font-size: 1.6rem;
     font-weight: 600;
     text-align: center;
 }
+
 .detail__btn {
-  
+
     display: inline-flex;
     align-items: center;
     justify-content: center;
@@ -503,7 +563,7 @@
 }
 
 .detail__info-item {
-    
+
     flex-direction: column;
     gap: 5px;
 }
@@ -518,7 +578,7 @@
     font-size: 1.2rem;
     font-weight: 500;
     color: var(--text-color);
-     font-size: 1.0rem;
+    font-size: 1.0rem;
 }
 
 /* Images Section */
@@ -655,7 +715,7 @@
 
 .info-item:hover {
     border-color: var(--accent-color);
-    box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
 }
 
 .info-item__icon {
@@ -729,7 +789,7 @@
     left: 0;
     width: 100%;
     height: 100%;
-    background: rgba(0,0,0,0.5);
+    background: rgba(0, 0, 0, 0.5);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -753,14 +813,17 @@
         display: grid;
         grid-template-columns: 1fr 1fr;
     }
+
     .detail__info-row {
         grid-template-columns: 1fr;
     }
+
     .detail__price {
         display: grid;
         justify-content: center;
         gap: 20px;
     }
+
     .account-detail__price {
         grid-template-columns: 1fr;
     }
@@ -798,9 +861,10 @@
 }
 
 @media (max-width: 480px) {
-    .detail__info{
+    .detail__info {
         width: 100%;
     }
+
     .account-detail__wrapper {
         padding: 15px;
     }
@@ -820,12 +884,19 @@
     .gallery__title {
         font-size: 1.6rem;
     }
+    
+.detail__info-row {
+    
+    padding: 7px 0;
+  
+}
 }
 
 /* Modal Styles */
 /* Update modal display property */
 .modal {
-    display: none; /* Hidden by default */
+    display: none;
+    /* Hidden by default */
     position: fixed;
     top: 0;
     left: 0;
@@ -852,6 +923,7 @@
         opacity: 0;
         transform: translateY(-20px);
     }
+
     to {
         opacity: 1;
         transform: translateY(0);
@@ -911,7 +983,7 @@
 
 .modal__value--price {
     color: var(--accent-color);
-    font-size: 1.8rem;
+    font-size: 1.5rem;
     font-weight: 700;
 }
 
@@ -944,9 +1016,9 @@
     color: #856404;
     padding: 15px;
     border-radius: 6px;
-    margin-top: 20px;
+    
     font-size: 1.4rem;
-    text-align: center;
+    text-align: left;
 }
 
 .modal__footer {

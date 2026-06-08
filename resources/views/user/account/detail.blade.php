@@ -63,15 +63,32 @@
                             </span>
                         </div>
                     </div>
-                    
-                    <div class="detail__info-row">
-                        <div class="detail__info-item">
-                            <span class="detail__info-label">Giá:</span>
-                            <span class="detail__info-value">
-                                {{ number_format($account->price) }} đ
-                            </span>
-                        </div>
-                    </div>
+                  <div class="detail__info-row">
+    <div class="detail__info-item">
+        <span class="detail__info-label">Giá:</span>
+            @if($account->server)
+                <span class="old-price">
+                 @if($account->server >= 1000000)
+    {{ floor($account->server / 1000000) }}m{{ floor(($account->server % 1000000) / 100000) ?: '' }}
+                    @elseif($account->server >= 1000)
+                        {{ number_format($account->server / 1000, 0, ',', '.') }}k
+                    @else
+                        {{ number_format($account->server) }}đ
+                    @endif
+                </span>
+            @endif
+
+            <span class="detail__info-value new-price">
+                @if($account->price >= 1000000)
+              {{ floor($account->price / 1000000) }}m{{ sprintf('%03d', floor(($account->price % 1000000) / 1000)) }}k
+                @elseif($account->price >= 1000)
+                    {{ number_format($account->price / 1000, 0, ',', '.') }}k
+                @else
+                    {{ number_format($account->price) }}đ
+                @endif
+            </span>
+    </div>
+</div>
 
                     <div class="detail__info-row">
                         <div class="detail__info-item">
@@ -131,7 +148,7 @@
 <div id="purchaseModal" class="modal">
     <div class="modal__content">
         <div class="modal__header">
-            <h2 class="modal__title">XÁC NHẬN MUA TÀI KHOẢN MÃ: {{ $account->account_name }}</h2>
+            <h2 class="modal__title">XÁC NHẬN MUA MÃ: {{ $account->account_name }}</h2>
             <button class="modal__close" onclick="closePurchaseModal()">&times;</button>
         </div>
 
@@ -153,8 +170,8 @@
             @auth
             @if (Auth::user()->balance < $account->price)
                 <div class="modal__notice">
-                    Bạn cần thêm {{ number_format($account->price - Auth::user()->balance) }} đ để mua tài khoản này.
-                    Bạn hãy click vào nút nạp thẻ để nạp thêm và mua tài khoản.
+                    Bạn cần thêm {{ number_format($account->price - Auth::user()->balance) }}đ để mua tài khoản này.
+                    Bạn hãy click vào nút nạp tiền để nạp thêm và mua tài khoản hoặc liên hệ admin hỗ trợ.
                 </div>
                 @endif
                 @else
@@ -169,7 +186,7 @@
             @if (Auth::user()->balance < $account->price)
             <a href="https://zalo.me/0774412304" target="_blank" class="modal__btn modal__btn--zalo">
               <i class="fas fa-comment-dots"></i>
-               LIÊN HỆ ZALO HỖ TRỢ NHANH
+               LIÊN HỆ ZALO HỖ TRỢ 
             </a>
                 <button class="modal__btn modal__btn--wallet" onclick="showRechargeModal('wallet')">NẠP TIỀN</button>
                 @else
@@ -177,18 +194,66 @@
                     MUA</button>
             <a href="https://zalo.me/0774412304" target="_blank" class="modal__btn modal__btn--zalo">
               <i class="fas fa-comment-dots"></i>
-               LIÊN HỆ ZALO HỖ TRỢ NHANH
+               LIÊN HỆ ZALO HỖ TRỢ 
             </a>    
                 @endif
                 @else
             <a href="https://zalo.me/0774412304" target="_blank" class="modal__btn modal__btn--zalo">
               <i class="fas fa-comment-dots"></i>
-               LIÊN HỆ ZALO HỖ TRỢ NHANH
+               LIÊN HỆ ZALO HỖ TRỢ 
             </a>
                 <a class="modal__btn modal__btn--wallet" href="{{ route('login') }}">ĐĂNG NHẬP</a>
                 @endauth
                 <!-- <button class="modal__btn modal__btn--close" onclick="closePurchaseModal()">ĐÓNG</button> -->
         </div>
+
+
+
+           <div class="modal__body">
+                <div class="seller-box">
+                    <div class="seller-info">
+                        <img class="seller-avatar"
+                            src="https://scontent.fdad2-1.fna.fbcdn.net/v/t39.30808-6/495369355_1035702681999185_7655716003355298532_n.jpg?stp=dst-jpg_tt6&cstp=mx600x600&ctp=s600x600&_nc_cat=108&ccb=1-7&_nc_sid=6ee11a&_nc_eui2=AeHhphAQR7JfdXY-VoJOnRb8h0PyVcwxrbSHQ_JVzDGttI1XhoG0mIgnNuuBJJ-c25iHgFMSm55PVaqkPHQtEU00&_nc_ohc=9by20A7WQ-sQ7kNvwEpzqA7&_nc_oc=AdqZXSuZJIUI81JjoyXtiT1bzyRRo7Tq2i7oqqdPoLU2BBgRL7LHrxRwc7j3GwyEjaY&_nc_zt=23&_nc_ht=scontent.fdad2-1.fna&_nc_gid=CeWaKpQtIZRKEjyaRPU20Q&_nc_ss=7b2a8&oh=00_Af_q94oPk1GiY78mox5qpWlld9gbd26npzfYLN4gsRFWJg&oe=6A2C4CAB"
+                            alt="avatar">
+
+                        <div class="seller-text">
+                            <a href="https://www.facebook.com/100052288892328" target="_blank">
+                                <span class="seller-name">
+                                    Hoàng Thế Khang
+                                    <i class="fas fa-check-circle verified"></i>
+                                </span>
+                            </a>
+
+                            <a href="https://www.facebook.com/100066783877817" target="_blank">
+                                <span class="seller-name">
+                                    Văn Phú
+                                    <i class="fas fa-check-circle verified"></i>
+                                </span>
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="seller-social">
+                        <a href="https://www.facebook.com/100052288892328"
+                        target="_blank"
+                        class="social-btn facebook">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+
+                        <a href="https://zalo.me/0774412304"
+                        target="_blank"
+                        class="social-btn zalo">
+                            Zalo
+                        </a>
+
+                        <a href="https://m.me/100052288892328"
+                        target="_blank"
+                        class="social-btn messenger">
+                            <i class="fab fa-facebook-messenger"></i>
+                        </a>
+                    </div>
+               </div>
+           </div>       
     </div>
 </div>
 
@@ -209,23 +274,34 @@
 
 
             <div class="installment-contact-title">
-                Bấm vào icon để liên hệ người bán thực hiện trả góp
+                Bấm vào icon để liên hệ người bán thực hiện trả góp hoặc lên đời acc
             </div>
 
   <div class="seller-box">
     <div class="seller-info">
         <img class="seller-avatar"
-             src="https://scontent.fdad2-1.fna.fbcdn.net/v/t39.30808-6/495369355_1035702681999185_7655716003355298532_n.jpg?_nc_cat=108&ccb=1-7&_nc_sid=6ee11a&_nc_ohc=NV24V1B44goQ7kNvwFFmAnv&_nc_oc=AdrMaslfMze_tJqw8Fu2RZWrp9Wq7ru-p1Kh-bPVP0M4HKh2Dz8A10I2DFv_njkv21w&_nc_zt=23&_nc_ht=scontent.fdad2-1.fna&_nc_gid=_3qQm6nOSyrNio-zmd7Swg&_nc_ss=7b2a8&oh=00_Af9UXNvH6wufo6gexTMdwkzeqYt-a-XiC7wVqxIFQVLtlw&oe=6A257CEB"
+             src="https://scontent.fdad2-1.fna.fbcdn.net/v/t39.30808-6/495369355_1035702681999185_7655716003355298532_n.jpg?stp=dst-jpg_tt6&cstp=mx600x600&ctp=s600x600&_nc_cat=108&ccb=1-7&_nc_sid=6ee11a&_nc_eui2=AeHhphAQR7JfdXY-VoJOnRb8h0PyVcwxrbSHQ_JVzDGttI1XhoG0mIgnNuuBJJ-c25iHgFMSm55PVaqkPHQtEU00&_nc_ohc=9by20A7WQ-sQ7kNvwEpzqA7&_nc_oc=AdqZXSuZJIUI81JjoyXtiT1bzyRRo7Tq2i7oqqdPoLU2BBgRL7LHrxRwc7j3GwyEjaY&_nc_zt=23&_nc_ht=scontent.fdad2-1.fna&_nc_gid=CeWaKpQtIZRKEjyaRPU20Q&_nc_ss=7b2a8&oh=00_Af_q94oPk1GiY78mox5qpWlld9gbd26npzfYLN4gsRFWJg&oe=6A2C4CAB"
              alt="avatar">
 
-        <span class="seller-name">
-           Hoàng Thế Khang
-            <i class="fas fa-check-circle verified"></i>
-        </span>
+        <div class="seller-text">
+            <a href="https://www.facebook.com/100052288892328" target="_blank">
+                <span class="seller-name">
+                    Hoàng Thế Khang
+                    <i class="fas fa-check-circle verified"></i>
+                </span>
+            </a>
+
+            <a href="https://www.facebook.com/100066783877817" target="_blank">
+                <span class="seller-name">
+                    Văn Phú
+                    <i class="fas fa-check-circle verified"></i>
+                </span>
+            </a>
+        </div>
     </div>
-<!-- https://www.facebook.com/100052288892328 -->
+
     <div class="seller-social">
-        <a href="#"
+        <a href="https://www.facebook.com/100052288892328"
            target="_blank"
            class="social-btn facebook">
             <i class="fab fa-facebook-f"></i>
@@ -236,8 +312,8 @@
            class="social-btn zalo">
             Zalo
         </a>
-<!-- https://m.me/100052288892328 -->
-        <a href="#"
+
+        <a href="https://m.me/100052288892328"
            target="_blank"
            class="social-btn messenger">
             <i class="fab fa-facebook-messenger"></i>
@@ -373,9 +449,9 @@ function closeInstallmentModal() {
                     });
             }
 
-      function showRechargeModal(type) {
-    window.location.href = '/profile/deposit/atm';
-}
+            function showRechargeModal(type) {
+                window.open('/profile/deposit/atm', '_blank');
+            }
 
             function closePurchaseModal() {
                 const modal = document.getElementById('purchaseModal');

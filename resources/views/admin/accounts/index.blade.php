@@ -76,7 +76,7 @@
                                             </span>
                                         </td>
                                       
-                                        <td>{{ $account->registration_type === 'real' ? 'Google - Trắng thông tin' : 'Garena' }}</td>
+                                        <td>{{ $account->registration_type === 'real' ? 'Liên kết Google trắng' : 'Garena' }}</td>
                                         <td>
                                             <img src="{{ asset($account->thumb) }}" alt="{{ $account->account_name }}"
                                                 class="img-thumbnail" style="max-width: 100px;">

@@ -87,7 +87,7 @@
                                         class="select @error('registration_type') is-invalid @enderror">
                                        
                                         <option value="real" {{ old('registration_type') == 'real' ? 'selected' : '' }}>
-                                            Google - Trắng thông tin</option>
+                                            Liên kết Google trắng</option>
                                          <option value="virtual"
                                             {{ old('registration_type') == 'virtual' ? 'selected' : '' }}>Garena</option>
                                     </select>

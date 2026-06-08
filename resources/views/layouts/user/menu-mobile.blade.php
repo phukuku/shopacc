@@ -11,10 +11,17 @@
             <a href="{{ route('category.show-all') }}"
                 class="menu-mobile__link {{ request()->routeIs('category*') ? 'active' : '' }}">
                 <i class="fas fa-gamepad"></i>
-                <span>Tài khoản</span>
+                <span>Danh mục</span>
             </a>
         </li>
 
+          <li class="menu-mobile__item">
+            <a href="{{ route('account') }}"
+                class="menu-mobile__link {{ request()->routeIs('account') || request()->routeIs('account.*') ? 'active' : '' }}">
+                <i class="fas fa-search"></i>
+                <span>Tìm acc</span>
+            </a>
+        </li>
 
         <li class="menu-mobile__item">
             <a href="{{ route('profile.index') }}"
@@ -78,7 +85,9 @@
                     <a href="{{ route('category.show-all') }}" class="mobile-overlay-menu__link">
                         <i class="fas fa-gamepad"></i> Tài khoản Game
                     </a>
-
+                    <a href="{{ route('account') }}" class="mobile-overlay-menu__link">
+                        <i class="fas fa-search"></i> Tìm acc
+                    </a>
                 </li>
 
                 <li>

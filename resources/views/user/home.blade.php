@@ -129,52 +129,52 @@
             <h2 class="menu__header__title">Dịch vụ</h2>
         </header>
 
-        <div class="transaction__list" style="display:flex;justify-content:space-between;align-items:center;">
+        <div class="transaction__list" style="display:flex;">
 
-            <a href="#" class="transaction__item" style="width:25%;text-align:center;background:none;box-shadow:none;border:none;">
+            <a href="#" class="transaction__item" style="width:25%;text-align:center;  box-shadow:none;  ">
                 <div class="transaction__icon">
                     <img src="https://nhanff.com/images/cate-ff.webp"
                          alt="Free Fire"
                          class="transaction__img"
                          style="width:45px;height:45px;border-radius:50%;">
                 </div>
-                <p class="text text__transaction__item" style="font-size:11px;margin-top:5px;">
+                <p class="text text__transaction__item" style="font-size:11px; ">
                     FREE FIRE
                 </p>
             </a>
 
-            <a href="#" class="transaction__item" style="width:25%;text-align:center;background:none;box-shadow:none;border:none;">
+            <a href="#" class="transaction__item" style="width:25%;text-align:center;  box-shadow:none;  ">
                 <div class="transaction__icon">
                     <img src="https://cdn-www.bluestacks.com/bs-images/34f479426e2671b12e7418f06397708a.png"
                          alt="Liên Quân"
                          class="transaction__img"
                          style="width:45px;height:45px;border-radius:50%;">
                 </div>
-                <p class="text text__transaction__item" style="font-size:11px;margin-top:5px;">
+                <p class="text text__transaction__item" style="font-size:11px; ">
                     LIÊN QUÂN
                 </p>
             </a>
 
-            <a href="#" class="transaction__item" style="width:25%;text-align:center;background:none;box-shadow:none;border:none;">
+            <a href="#" class="transaction__item" style="width:25%;text-align:center;  box-shadow:none;  ">
                 <div class="transaction__icon">
                     <img src="https://cdn-icons-png.flaticon.com/512/733/733547.png"
                          alt="Facebook"
                          class="transaction__img"
                          style="width:45px;height:45px;border-radius:50%;">
                 </div>
-                <p class="text text__transaction__item" style="font-size:11px;margin-top:5px;">
+                <p class="text text__transaction__item" style="font-size:11px; ">
                     FACEBOOK
                 </p>
             </a>
 
-            <a href="#" class="transaction__item" style="width:25%;text-align:center;background:none;box-shadow:none;border:none;">
+            <a href="#" class="transaction__item" style="width:25%;text-align:center;  box-shadow:none;  ">
                 <div class="transaction__icon">
                     <img src="https://cdn-icons-png.flaticon.com/512/3046/3046121.png"
                          alt="TikTok"
                          class="transaction__img"
                          style="width:45px;height:45px;border-radius:50%;">
                 </div>
-                <p class="text text__transaction__item" style="font-size:11px;margin-top:5px;">
+                <p class="text text__transaction__item" style="font-size:11px; ">
                     TIKTOK
                 </p>
             </a>

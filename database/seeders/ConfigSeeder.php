@@ -70,8 +70,7 @@ class ConfigSeeder extends Seeder
             // 'payment.momo.active' => '1',
             // Login social settings (stored as JSON)
             'login_social.google.active' => '1',
-            'login_social.google.client_id' => '695655624016-tnn916t7g53oqulsiq0d9vvn7bof1568.apps.googleusercontent.com',
-            'login_social.google.client_secret' => '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',
+
             'login_social.google.redirect' => 'http://localhost:8000/auth/google/callback',
             'login_social.facebook.active' => '1',
             'login_social.facebook.client_id' => '713944317580357',

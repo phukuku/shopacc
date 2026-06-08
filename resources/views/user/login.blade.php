@@ -64,7 +64,7 @@
                         Đăng nhập
                     </button>
 
-                    <!-- @if (config_get('login_social.google.active', false) || config_get('login_social.facebook.active', false))
+                    @if (config_get('login_social.google.active', false) || config_get('login_social.facebook.active', false))
                         <div class="social-login">
                             <p class="social-login-text">Hoặc đăng nhập bằng</p>
                             <div class="social-login-buttons">
@@ -82,7 +82,7 @@
                                 @endif
                             </div>
                         </div>
-                    @endif -->
+                    @endif
 
                     <div class="login-link">
                         Chưa có tài khoản? <a href="{{ route('register') }}">Đăng ký ngay</a>

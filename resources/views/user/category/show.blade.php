@@ -14,12 +14,12 @@
             <div class="account-filter__row">
 
                 <div class="account-filter__group">
-                    <label for="code" class="account-filter__label">Mã Số:</label>
+                    <label for="code" class="account-filter__label">Tìm kiếm:</label>
                     <input type="text"
                         id="code"
                         name="code"
                         class="account-filter__input"
-                        placeholder="Nhập Mã Số"
+                        placeholder="Nhập ..."
                         value="{{ request('code') }}"
                         oninput="clearTimeout(window.searchTimer); window.searchTimer=setTimeout(()=>this.form.submit(),500);">
                 </div>
@@ -61,23 +61,20 @@
                     </select>
                 </div>
 
+                
                 <div class="account-filter__group">
-                    <label for="status" class="account-filter__label">Trạng thái:</label>
-                    <select id="status"
-                        name="status"
+                    <label for="sort" class="account-filter__label">Sắp xếp:</label>
+                    <select id="sort"
+                        name="sort"
                         class="account-filter__input account-filter__input--select"
                         onchange="this.form.submit()">
 
-                        <option value="">Trạng Thái</option>
-
-                        <option value="available"
-                            {{ request('status') == 'available' ? 'selected' : '' }}>
-                            Chưa bán
+                        <option value="newest" {{ request('sort') == 'newest' ? 'selected' : '' }}>
+                            Mới nhất
                         </option>
 
-                        <option value="sold"
-                            {{ request('status') == 'sold' ? 'selected' : '' }}>
-                            Đã bán
+                        <option value="oldest" {{ request('sort') == 'oldest' ? 'selected' : '' }}>
+                            Cũ nhất
                         </option>
 
                     </select>
@@ -98,13 +95,16 @@
             @forelse($accounts as $account)
             <div class="account-card">
                 <div class="account-media">
+                    @if($account->created_at >= now()->subDays(2))
+                    <div class="badge-new">
+                        &nbsp;Acc mới&nbsp;
+                    </div>
+                    @endif
+
                     <a href="{{ route('account.show', ['id' => $account->id]) }}">
                         <img src="{{ $account->thumb }}" alt="Account Preview" class="account-img">
                         <div class="account-code">Mã: {{ $account->account_name }}</div>
                     </a>
-
-
-
                 </div>
 
                 <a href="{{ route('account.show', ['id' => $account->id]) }}">
@@ -118,8 +118,30 @@
 
                     <div class="account-actions">
                         <div class="card-price">
-                            GIÁ: {{ number_format($account->price) }} đ
-                        </div>
+                          <span class="new-price">
+                            GIÁ:
+
+                            @if($account->server)
+                                <span class="old-price">
+                                   @if($account->server >= 1000000)
+    {{ floor($account->server / 1000000) }}m{{ floor(($account->server % 1000000) / 100000) ?: '' }}
+                                    @elseif($account->server >= 1000)
+                                        {{ number_format($account->server / 1000, 0, ',', '.') }}k
+                                    @else
+                                        {{ number_format($account->server) }}đ
+                                    @endif
+                                </span>
+                            @endif
+
+                           @if($account->price >= 1000000)
+    {{ floor($account->price / 1000000) }}m{{ sprintf('%03d', floor(($account->price % 1000000) / 1000)) }}k
+                            @elseif($account->price >= 1000)
+                                {{ number_format($account->price / 1000, 0, ',', '.') }}k
+                            @else
+                                {{ number_format($account->price) }}đ
+                            @endif
+                        </span>
+                       </div>
                         <a href="{{ route('account.show', ['id' => $account->id]) }}"
                             class="action-btn action-btn--detail">XEM CHI TIẾT</a>
                     </div>

@@ -20,7 +20,7 @@
                             <a href="{{ route('category.index', ['slug' => $category->slug]) }}" class="category__item">
                                 <img src="{{ $category->thumbnail }}" alt="{{ $category->name }}" class="category__img" />
                                 <h2 class="category__title">{{ strtoupper($category->name) }}</h2>
-                                <p class="category__desc">Tổng tài khoản: {{ number_format($category->allAccount) }}</p>
+                                <p class="category__desc">Đang còn {{ number_format($category->allAccount) }} tài khoản</p>
                                 <p class="category__desc">Acc đã bán: {{ number_format($category->soldCount) }}</p>
                                 <p class="text category__action">Xem ngay</p>
                             </a>

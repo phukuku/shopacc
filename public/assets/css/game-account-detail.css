@@ -78,7 +78,6 @@
 .detail__info {
     background: #f8f9fa;
     border-radius: 12px;
-    padding: 30px;
     margin-bottom: 40px;
     border: 1px solid #eaeaea;
 }
@@ -119,10 +118,16 @@
 }
 
 .detail__info-value {
-    font-size: 1.7rem;
+    font-size: 1.6rem;
     color: #333;
     font-weight: 500;
     flex-grow: 1;
+}
+.new-price{
+     color: #0e3eda;
+    font-size: 1.5rem;
+    font-weight: 700;
+    
 }
 
 /* Account Stats */
@@ -288,7 +293,7 @@
 }
 
 .modal__row {
-    display: flex;
+   font-size: 1.5rem;
     align-items: center;
     margin-bottom: 15px;
     gap: 10px;
@@ -521,9 +526,7 @@
         padding: 25px;
     }
 
-    .detail__info {
-        padding: 20px;
-    }
+ 
 
     .detail__info-title,
     .detail__images-title {
@@ -553,7 +556,10 @@
         padding: 20px;
     }
 
-
+    .installment-contact-title{
+       font-size: 1.5rem;
+       padding: 5px;
+    }
     .detail__info-label {
         margin-bottom: 5px;
     }
@@ -569,4 +575,16 @@
     .image-viewer {
         padding: 20px;
     }
+    .detail__info-value{
+            font-size: 1.3rem;
+    }
+    .detail__info-label{
+            font-size: 1.3rem;
+    }
+    .new-price{
+    
+    font-size: 1.5rem;
+    
+    
+}
 }

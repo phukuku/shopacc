@@ -95,7 +95,7 @@
                                             Garena</option>
                                         <option value="real"
                                             {{ old('registration_type', $account->registration_type) == 'real' ? 'selected' : '' }}>
-                                            Google - Trắng thông tin</option>
+                                            Liên kết Google trắng</option>
 
 
                                       

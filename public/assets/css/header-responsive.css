@@ -23,8 +23,12 @@
 }
 
 .nav__logo {
-    height: 50px;
+   height: 90px;
+    width: auto;
+    max-width: 300px;
+    display: block;
     object-fit: contain;
+    transition: opacity var(--transition);
 }
 
 .nav__menu {
@@ -131,10 +135,10 @@
         flex-wrap: wrap;
     }
 
-    .nav__logo {
-        aspect-ratio: 4 / 1;
-        height: 35px;
-        order: 1;
+    .nav__logo {   
+        height: 90px;
+        max-width: 180px;
+        
     }
 
     .nav__action {
@@ -162,7 +166,7 @@
     }
 
     .nav__logo {
-        height: 35px;
+        height: 60px;
     }
 
     .action__link {
@@ -170,9 +174,7 @@
         height: 38px;
     }
 
-    .announcement {
-        padding: 8px 0;
-    }
+    
 
 
 }
