@@ -898,7 +898,7 @@ body.no-scroll {
 
 @media (max-width: 480px) {
     .container {
-        max-width: calc(100% - 30px);
+        max-width: calc(100% - 10px);
     }
 
     .nav__action {

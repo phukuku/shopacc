@@ -6,8 +6,7 @@
 <!-- Hero Section -->
 <x-hero-header
     title="Tất cả tài khoản game"
-    description="Danh sách tất cả tài khoản đang bán" />
-
+    description="Hiện có {{ number_format($totalAccounts) }} tài khoản đang bán" />
 <!-- Account List Section -->
 <section class="account-section">
     <div class="container">
@@ -50,15 +49,12 @@
                             1M - 3M
                         </option>
 
-                        <option value="3000000-5000000"
-                            {{ request('price_range') == '3000000-5000000' ? 'selected' : '' }}>
-                            3M - 5M
+                           <option value="3000000"
+                            {{ request('price_range') == '3000000' ? 'selected' : '' }}>
+                            Trên 3M
                         </option>
 
-                        <option value="5000000"
-                            {{ request('price_range') == '5000000' ? 'selected' : '' }}>
-                            Trên 5M
-                        </option>
+                     
 
                     </select>
                 </div>
@@ -118,29 +114,29 @@
                 <div class="account-actions">
                    <div class="card-price">
                         <span class="new-price">
-    GIÁ:
+                        GIÁ:
 
-    @if($account->server)
-        <span class="old-price">
-          @if($account->server >= 1000000)
-    {{ floor($account->server / 1000000) }}m{{ floor(($account->server % 1000000) / 100000) ?: '' }}
-                
-            @elseif($account->server >= 1000)
-                {{ number_format($account->server / 1000, 0, ',', '.') }}k
-            @else
-                {{ number_format($account->server) }}đ
-            @endif
-        </span>
-    @endif
-    
-           @if($account->price >= 1000000)
-    {{ floor($account->price / 1000000) }}m{{ sprintf('%03d', floor(($account->price % 1000000) / 1000)) }}k
-    @elseif($account->price >= 1000)
-        {{ number_format($account->price / 1000, 0, ',', '.') }}k
-    @else
-        {{ number_format($account->price) }}đ
-    @endif
-</span>
+                        @if($account->server)
+                            <span class="old-price">
+                            @if($account->server >= 1000000)
+                        {{ floor($account->server / 1000000) }}m{{ floor(($account->server % 1000000) / 100000) ?: '' }}
+                                    
+                                @elseif($account->server >= 1000)
+                                    {{ number_format($account->server / 1000, 0, ',', '.') }}k
+                                @else
+                                    {{ number_format($account->server) }}đ
+                                @endif
+                            </span>
+                        @endif
+                        
+                            @if($account->price >= 1000000)
+                        {{ floor($account->price / 1000000) }}m{{ sprintf('%03d', floor(($account->price % 1000000) / 1000)) }}k
+                        @elseif($account->price >= 1000)
+                            {{ number_format($account->price / 1000, 0, ',', '.') }}k
+                        @else
+                            {{ number_format($account->price) }}đ
+                        @endif
+                    </span>
                        </div>
 
                         <a href="{{ route('account.show', ['id' => $account->id]) }}"
@@ -150,7 +146,7 @@
              </div>
             @empty
             <div class="no-data">
-                <p class="no-data-text">Không có tài khoản nào</p>
+                <p class="no-data-text">Hiện đang hết tài khoản loại này, vui lòng quay lại sau !</p>
             </div>
             @endforelse
         </div>

@@ -47,7 +47,7 @@
                                     <th>Danh mục</th>
                                     <th>Giá tiền</th>
                                     <th>Trạng thái</th>                              
-                                    <th>Đăng nhập bằng</th>
+                                    <!-- <th>Đăng nhập bằng</th> -->
                                     <th>Ảnh đại diện</th>
                                     <th>Thao tác</th>
                                 </tr>
@@ -68,7 +68,11 @@
                                                 href="{{ route('admin.categories.edit', ['category' => $account->category->id]) }}">{{ $account->category->name }}</a>
                                         </td>
                                       
-                                        <td>{{ ($account->price) }} </td>
+                                        <td>{{ $account->price >= 1000000
+                                            ? floor($account->price / 1000000) . 'm' . (floor(($account->price % 1000000) / 1000) ?: '')
+                                            : floor($account->price / 1000)
+                                        }} 
+                                        </td>
                                         <td>
                                             <span
                                                 class="badges {{ $account->status === 'available' ? 'bg-lightgreen' : 'bg-lightred' }}">
@@ -76,7 +80,7 @@
                                             </span>
                                         </td>
                                       
-                                        <td>{{ $account->registration_type === 'real' ? 'Liên kết Google trắng' : 'Garena' }}</td>
+                                        <!-- <td>{{ $account->registration_type === 'real' ? 'Liên kết Google trắng' : 'Garena' }}</td> -->
                                         <td>
                                             <img src="{{ asset($account->thumb) }}" alt="{{ $account->account_name }}"
                                                 class="img-thumbnail" style="max-width: 100px;">

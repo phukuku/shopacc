@@ -39,7 +39,7 @@
         gap:18px;
     ">
 
-        <a href="https://www.facebook.com/shopkhangphu"
+        <a href="{{ config_get('facebook', '#') }}"
            target="_blank"
            style="
                 width:58px;
@@ -58,7 +58,7 @@
         </a>
 
         <!-- Zalo -->
-        <a href="https://zalo.me/0774412304"
+        <a href="https://www.facebook.com/100066783877817"
            target="_blank"
            style="
                 width:58px;

@@ -34,32 +34,11 @@
         <h2 class="sidebar-title">MENU GIAO DỊCH</h2>
     </div>
     <ul class="sidebar-menu">
-        <!-- <li class="sidebar-item {{ request()->routeIs('profile.wheels-history') ? 'active' : '' }}">
-            <a href="{{ route('profile.wheels-history') }}" class="sidebar-link">
-                <i class="fa-solid fa-clock-rotate-left"></i> Lịch sử vòng quay
-            </a>
-        </li> -->
+      
         <li class="sidebar-item {{ request()->routeIs('profile.purchased-accounts') ? 'active' : '' }}">
             <a href="{{ route('profile.purchased-accounts') }}" class="sidebar-link">
                 <i class="fa-solid fa-box"></i> Tài khoản đã mua
             </a>
         </li>
-        <!-- <li class="sidebar-item {{ request()->routeIs('profile.purchased-random-accounts') ? 'active' : '' }}">
-            <a href="{{ route('profile.purchased-random-accounts') }}" class="sidebar-link">
-                <i class="fa-solid fa-dice"></i> Random đã mua
-            </a>
-        </li> -->
-        <!-- {{--
-            Chưa phát triển
-        <li class="sidebar-item">
-            <a href="#" class="sidebar-link">
-                <i class="fa-solid fa-money-bill"></i> Tài khoản trả góp
-            </a>
-        </li> --}}
-        <li class="sidebar-item {{ request()->routeIs('profile.services-history') ? 'active' : '' }}">
-            <a href="{{ route('profile.services-history') }}" class="sidebar-link">
-                <i class="fa-solid fa-clipboard-list"></i> Dịch vụ đã thuê
-            </a>
-        </li> -->
     </ul>
 </div>

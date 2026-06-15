@@ -24,7 +24,7 @@
                         <div class="row">
                             <div class="col-lg-6 col-sm-6 col-12">
                                 <div class="form-group">
-                                    <label>Facebook <span class="manitory">*</span></label>
+                                    <label>Facebook page <span class="manitory">*</span></label>
                                     <input type="text" name="facebook"
                                         class="form-control @error('facebook') is-invalid @enderror"
                                         value="{{ old('facebook', $configs['facebook']) }}"
@@ -49,7 +49,7 @@
                             </div>
                             <div class="col-lg-6 col-sm-6 col-12">
                                 <div class="form-group">
-                                    <label>YouTube</label>
+                                    <label>Messenger</label>
                                     <input type="text" name="youtube"
                                         class="form-control @error('youtube') is-invalid @enderror"
                                         value="{{ old('youtube', $configs['youtube']) }}"
@@ -60,7 +60,7 @@
                                     <small class="form-text text-muted">Kênh YouTube của bạn</small>
                                 </div>
                             </div>
-                            <div class="col-lg-6 col-sm-6 col-12">
+                            <!-- <div class="col-lg-6 col-sm-6 col-12">
                                 <div class="form-group">
                                     <label>Discord</label>
                                     <input type="text" name="discord"
@@ -72,10 +72,10 @@
                                     @enderror
                                     <small class="form-text text-muted">Máy chủ Discord của bạn</small>
                                 </div>
-                            </div>
+                            </div> -->
                             <div class="col-lg-6 col-sm-6 col-12">
                                 <div class="form-group">
-                                    <label>Telegram</label>
+                                    <label>Fb Văn Phú</label>
                                     <input type="text" name="telegram"
                                         class="form-control @error('telegram') is-invalid @enderror"
                                         value="{{ old('telegram', $configs['telegram'] ?? '') }}"
@@ -88,7 +88,7 @@
                             </div>
                             <div class="col-lg-6 col-sm-6 col-12">
                                 <div class="form-group">
-                                    <label>TikTok</label>
+                                    <label>Fb Hoàng Thế Khang</label>
                                     <input type="text" name="tiktok"
                                         class="form-control @error('tiktok') is-invalid @enderror"
                                         value="{{ old('tiktok', $configs['tiktok'] ?? '') }}"
@@ -99,7 +99,7 @@
                                     <small class="form-text text-muted">Tài khoản TikTok của bạn</small>
                                 </div>
                             </div>
-                            <div class="col-lg-12">
+                            <!-- <div class="col-lg-12">
                                 <div class="form-group">
                                     <label>Giờ làm việc</label>
                                     <input type="text" name="working_hours"
@@ -111,7 +111,7 @@
                                     @enderror
                                     <small class="form-text text-muted">Giờ làm việc hỗ trợ khách hàng</small>
                                 </div>
-                            </div>
+                            </div> -->
                             <div class="col-lg-12">
                                 <div class="form-group">
                                     <label>Thông báo trang chủ</label>

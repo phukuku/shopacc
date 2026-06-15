@@ -582,9 +582,10 @@
             font-size: 1.3rem;
     }
     .new-price{
-    
-    font-size: 1.5rem;
-    
-    
-}
+    font-size: 1.3rem;
+    }
+
+    .action-btn{
+    font-size: 1.3rem;
+    }
 }

@@ -181,7 +181,7 @@
 .account-media {
   position: relative;
   width: 100%;
-  height: 200px;
+  /* height: 200px; */
 }
 
 .account-img {
@@ -261,11 +261,11 @@
 }
 
 .card-note {
-  
+
   text-align: center;
   color: #333;
   font-weight: 700;
-  font-size: 1.4rem;
+  font-size: 1.3rem;
   padding: 15px 0 ;
 }
 .card-price {

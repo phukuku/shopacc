@@ -64,31 +64,31 @@
                         </div>
                     </div>
                   <div class="detail__info-row">
-    <div class="detail__info-item">
-        <span class="detail__info-label">Giá:</span>
-            @if($account->server)
-                <span class="old-price">
-                 @if($account->server >= 1000000)
-    {{ floor($account->server / 1000000) }}m{{ floor(($account->server % 1000000) / 100000) ?: '' }}
-                    @elseif($account->server >= 1000)
-                        {{ number_format($account->server / 1000, 0, ',', '.') }}k
-                    @else
-                        {{ number_format($account->server) }}đ
-                    @endif
-                </span>
-            @endif
+                    <div class="detail__info-item">
+                        <span class="detail__info-label">Giá:</span>
+                            @if($account->server)
+                                <span class="old-price">
+                                @if($account->server >= 1000000)
+                    {{ floor($account->server / 1000000) }}m{{ floor(($account->server % 1000000) / 100000) ?: '' }}
+                                    @elseif($account->server >= 1000)
+                                        {{ number_format($account->server / 1000, 0, ',', '.') }}k
+                                    @else
+                                        {{ number_format($account->server) }}đ
+                                    @endif
+                                </span>
+                            @endif
 
-            <span class="detail__info-value new-price">
-                @if($account->price >= 1000000)
-              {{ floor($account->price / 1000000) }}m{{ sprintf('%03d', floor(($account->price % 1000000) / 1000)) }}k
-                @elseif($account->price >= 1000)
-                    {{ number_format($account->price / 1000, 0, ',', '.') }}k
-                @else
-                    {{ number_format($account->price) }}đ
-                @endif
-            </span>
-    </div>
-</div>
+                            <span class="detail__info-value new-price">
+                                @if($account->price >= 1000000)
+                            {{ floor($account->price / 1000000) }}m{{ sprintf('%03d', floor(($account->price % 1000000) / 1000)) }}k
+                                @elseif($account->price >= 1000)
+                                    {{ number_format($account->price / 1000, 0, ',', '.') }}k
+                                @else
+                                    {{ number_format($account->price) }}đ
+                                @endif
+                            </span>
+                    </div>
+                </div>
 
                     <div class="detail__info-row">
                         <div class="detail__info-item">
@@ -135,14 +135,108 @@
 
                     @endif
                 </div>
-
             </div>
+        </div>
+    </div>
+</section>
+
+<section class="account-section related-section">
+    <div class="container">
+
+            <h3 class="related-title">
+                Tài khoản liên quan ({{ number_format($categoryCount) -1}})
+            </h3>
+
+        <div class="related-wrapper">
+
+            <button class="slider-arrow slider-prev">
+                <i class="fas fa-chevron-left"></i>
+            </button>
+            
+
+            <div class="account-grid related-grid">
+
+                @forelse($relatedAccounts as $account)
+
+                <div class="account-card">
+
+                    <div class="account-media">
+
+                        @if($account->created_at >= now()->subDays(2))
+                        <div class="badge-new">
+                            &nbsp;Acc mới&nbsp;
+                        </div>
+                        @endif
+
+                        <a href="{{ route('account.show', ['id' => $account->id]) }}">
+                            <img src="{{ $account->thumb }}"
+                                alt="Account Preview"
+                                class="account-img">
+
+                            <div class="account-code">
+                                Mã: {{ $account->account_name }}
+                            </div>
+                        </a>
+
+                    </div>
+
+                    <a href="{{ route('account.show', ['id' => $account->id]) }}">
+
+                        <div class="account-note">
+                            <div class="card-note">
+                                {{ $account->note }}
+                            </div>
+                        </div>
+
+                        <div class="account-actions">
+
+                            <div class="card-price">
+                                <span class="new-price">
+                                    GIÁ:
+
+                                    @if($account->server)
+                                    <span class="old-price">
+                                        @if($account->server >= 1000000)
+                                        {{ floor($account->server / 1000000) }}m{{ floor(($account->server % 1000000) / 100000) ?: '' }}
+                                        @elseif($account->server >= 1000)
+                                        {{ number_format($account->server / 1000, 0, ',', '.') }}k
+                                        @else
+                                        {{ number_format($account->server) }}đ
+                                        @endif
+                                    </span>
+                                    @endif
+
+                                    @if($account->price >= 1000000)
+                                    {{ floor($account->price / 1000000) }}m{{ sprintf('%03d', floor(($account->price % 1000000) / 1000)) }}k
+                                    @elseif($account->price >= 1000)
+                                    {{ number_format($account->price / 1000, 0, ',', '.') }}k
+                                    @else
+                                    {{ number_format($account->price) }}đ
+                                    @endif
+                                </span>
+                            </div>
+
+                            <span class="action-btn action-btn--detail">
+                                XEM CHI TIẾT
+                            </span>
+
+                        </div>
+
+                    </a>
+
+                </div>
+                @empty
+                @endforelse
+            </div>
+
+            <button class="slider-arrow slider-next">
+                <i class="fas fa-chevron-right"></i>
+            </button>
 
         </div>
 
     </div>
 </section>
-
 
 <!-- Purchase Modal -->
 <div id="purchaseModal" class="modal">
@@ -184,7 +278,7 @@
         <div class="modal__footer">
             @auth
             @if (Auth::user()->balance < $account->price)
-            <a href="https://zalo.me/0774412304" target="_blank" class="modal__btn modal__btn--zalo">
+            <a href="https://zalo.me/{{ config_get('zalo') }}" target="_blank" class="modal__btn modal__btn--zalo">
               <i class="fas fa-comment-dots"></i>
                LIÊN HỆ ZALO HỖ TRỢ 
             </a>
@@ -192,13 +286,13 @@
                 @else
                 <button class="modal__btn modal__btn--card" onclick="submitPurchase()">XÁC NHẬN
                     MUA</button>
-            <a href="https://zalo.me/0774412304" target="_blank" class="modal__btn modal__btn--zalo">
+            <a href="https://zalo.me/{{ config_get('zalo') }}" target="_blank" class="modal__btn modal__btn--zalo">
               <i class="fas fa-comment-dots"></i>
                LIÊN HỆ ZALO HỖ TRỢ 
             </a>    
                 @endif
                 @else
-            <a href="https://zalo.me/0774412304" target="_blank" class="modal__btn modal__btn--zalo">
+            <a href="https://zalo.me/{{ config_get('zalo') }}" target="_blank" class="modal__btn modal__btn--zalo">
               <i class="fas fa-comment-dots"></i>
                LIÊN HỆ ZALO HỖ TRỢ 
             </a>
@@ -217,16 +311,16 @@
                             alt="avatar">
 
                         <div class="seller-text">
-                            <a href="https://www.facebook.com/100052288892328" target="_blank">
+                            <a href="{{ config_get('telegram', '#') }}" target="_blank">
                                 <span class="seller-name">
-                                    Hoàng Thế Khang
+                                    Văn Phú
                                     <i class="fas fa-check-circle verified"></i>
                                 </span>
                             </a>
 
-                            <a href="https://www.facebook.com/100066783877817" target="_blank">
+                            <a href="{{ config_get('tiktok', '#') }}" target="_blank">
                                 <span class="seller-name">
-                                    Văn Phú
+                                    Hoàng Thế Khang
                                     <i class="fas fa-check-circle verified"></i>
                                 </span>
                             </a>
@@ -234,19 +328,19 @@
                     </div>
 
                     <div class="seller-social">
-                        <a href="https://www.facebook.com/100052288892328"
+                        <a href="{{ config_get('facebook', '#') }}"
                         target="_blank"
                         class="social-btn facebook">
                             <i class="fab fa-facebook-f"></i>
                         </a>
 
-                        <a href="https://zalo.me/0774412304"
+                        <a href="https://zalo.me/{{ config_get('zalo') }}"
                         target="_blank"
                         class="social-btn zalo">
                             Zalo
                         </a>
 
-                        <a href="https://m.me/100052288892328"
+                        <a href="{{ config_get('youtube', '#') }}"
                         target="_blank"
                         class="social-btn messenger">
                             <i class="fab fa-facebook-messenger"></i>
@@ -284,16 +378,16 @@
              alt="avatar">
 
         <div class="seller-text">
-            <a href="https://www.facebook.com/100052288892328" target="_blank">
+            <a href="{{ config_get('telegram', '#') }}" target="_blank">
                 <span class="seller-name">
-                    Hoàng Thế Khang
+                    Văn Phú
                     <i class="fas fa-check-circle verified"></i>
                 </span>
             </a>
 
-            <a href="https://www.facebook.com/100066783877817" target="_blank">
+            <a href="{{ config_get('tiktok', '#') }}" target="_blank">
                 <span class="seller-name">
-                    Văn Phú
+                    Hoàng Thế Khang
                     <i class="fas fa-check-circle verified"></i>
                 </span>
             </a>
@@ -301,19 +395,19 @@
     </div>
 
     <div class="seller-social">
-        <a href="https://www.facebook.com/100052288892328"
+        <a href="{{ config_get('facebook', '#') }}"
            target="_blank"
            class="social-btn facebook">
             <i class="fab fa-facebook-f"></i>
         </a>
 
-        <a href="https://zalo.me/0774412304"
+        <a href="https://zalo.me/{{ config_get('zalo') }}"
            target="_blank"
            class="social-btn zalo">
             Zalo
         </a>
 
-        <a href="https://m.me/100052288892328"
+        <a href="{{ config_get('youtube', '#') }}"
            target="_blank"
            class="social-btn messenger">
             <i class="fab fa-facebook-messenger"></i>
@@ -342,6 +436,54 @@
     </div>
 </div>
 <script>
+document.addEventListener('DOMContentLoaded', function () {
+
+    const slider = document.querySelector('.related-grid');
+    const prevBtn = document.querySelector('.slider-prev');
+    const nextBtn = document.querySelector('.slider-next');
+    const cards = document.querySelectorAll('.related-grid .account-card');
+
+    if (!slider || !prevBtn || !nextBtn) return;
+
+    function toggleArrows() {
+
+        const isMobile = window.innerWidth <= 768;
+
+        // Mobile hiện 2 acc, PC hiện 3 acc
+        const visibleItems = isMobile ? 2 : 3;
+
+        if (cards.length <= visibleItems) {
+            prevBtn.style.display = 'none';
+            nextBtn.style.display = 'none';
+        } else {
+            prevBtn.style.display = 'block';
+            nextBtn.style.display = 'block';
+        }
+    }
+
+    toggleArrows();
+
+    window.addEventListener('resize', toggleArrows);
+
+    nextBtn.addEventListener('click', function () {
+        slider.scrollBy({
+            left: slider.clientWidth,
+            behavior: 'smooth'
+        });
+    });
+
+    prevBtn.addEventListener('click', function () {
+        slider.scrollBy({
+            left: -slider.clientWidth,
+            behavior: 'smooth'
+        });
+    });
+
+});
+</script>
+
+<script>
+
 function openGallery() {
     document.getElementById('galleryModal').style.display = 'block';
     document.body.style.overflow = 'hidden';

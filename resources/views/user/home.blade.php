@@ -23,7 +23,7 @@
             <!-- Top Nạp -->
             <div class="hero-sidebar">
                 <div class="hero-sidebar__header">
-                    <i class="fas fa-chart-line"></i> TOP 3 Nạp Tháng {{ date('m') }}
+                    <i class="fas fa-chart-line"></i> TOP Nạp Tháng {{ date('m') }}
                 </div>
                 <div class="hero-sidebar__content">
                     <div class="hero-sidebar__list">
@@ -33,7 +33,9 @@
                                     <div
                                         class="hero-sidebar__rank hero-sidebar__rank--{{ $loop->iteration <= 3 ? ($loop->iteration == 1 ? 'gold' : ($loop->iteration == 2 ? 'silver' : 'bronze')) : '' }}">
                                         {{ $loop->iteration }}</div>
-                                    <span class="hero-sidebar__name">{{ $depositor->user->username }}</span>
+                                   <span class="hero-sidebar__name">
+                                        {{ mb_substr($depositor->user->username, 0, 2) }}...
+                                    </span>
                                 </div>
                                 <div class="hero-sidebar__amount">{{ number_format($depositor->total_amount) }}đ</div>
                             </div>
@@ -76,7 +78,7 @@
                     @forelse($recentTransactions as $transaction)
                         <div class="recent-transactions__item">
                             <span
-                                class="recent-transactions__username">{{ substr($transaction->user->username, 0, 3) }}***</span>
+                                class="recent-transactions__username">{{ substr($transaction->user->username, 0, 2) }}***</span>
                             <span class="recent-transactions__time">{{ $transaction->created_at->diffForHumans() }}</span>
                             @if ($transaction->type == 'deposit')
                                 đã nạp

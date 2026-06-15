@@ -275,7 +275,7 @@
 @endsection
 
 @push('scripts')
-    <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
+    <!-- <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
     <script>
         $(document).ready(function() {
             var salesData = {!! json_encode($last7Days) !!};
@@ -333,5 +333,5 @@
             var chart = new ApexCharts(document.querySelector("#sales_charts"), options);
             chart.render();
         });
-    </script>
+    </script> -->
 @endpush

@@ -4,8 +4,9 @@
 
 @section('content')
 <!-- Hero Section -->
-<x-hero-header title="{{ $category->name }}" description="{{ $category->description }}" />
-
+<x-hero-header
+    title="{{ $category->name }}"
+    description="Hiện có {{ $accounts->count() }} tài khoản đang bán" />
 <!-- Account List Section -->
 <section class="account-section">
     <div class="container">
@@ -46,16 +47,10 @@
                         <option value="1000000-3000000"
                             {{ request('price_range') == '1000000-3000000' ? 'selected' : '' }}>
                             1M - 3M
-                        </option>
-
-                        <option value="3000000-5000000"
-                            {{ request('price_range') == '3000000-5000000' ? 'selected' : '' }}>
-                            3M - 5M
-                        </option>
-
-                        <option value="5000000"
-                            {{ request('price_range') == '5000000' ? 'selected' : '' }}>
-                            Trên 5M
+                        </option>           
+                        <option value="3000000"
+                            {{ request('price_range') == '3000000' ? 'selected' : '' }}>
+                            Trên 3M
                         </option>
 
                     </select>
@@ -149,7 +144,7 @@
             </div>
             @empty
             <div class="no-data">
-                <p class="no-data-text">Không có tài khoản nào</p>
+                <p class="no-data-text">Hiện đang hết tài khoản loại này</p>
             </div>
             @endforelse
         </div>

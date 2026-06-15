@@ -5,15 +5,15 @@
 <header class="announcement">
     <div class="container row">
         <div class="announcement__media">
-            <a class="social-btn facebook" href="https://www.facebook.com/100052288892328">
+            <a class="social-btn facebook" href="{{ config_get('facebook', '#') }}" target="_blank">
                 <i class="fa-brands fa-facebook"></i>
             </a>
 
-            <a class="social-btn messenger" href="https://m.me/100052288892328">
+            <a class="social-btn messenger" href="{{ config_get('youtube', '#') }}" target="_blank">
                 <i class="fa-brands fa-facebook-messenger"></i>
             </a>
 
-            <a class="social-btn zalo" href="https://zalo.me/0774412304" target="_blank">
+            <a class="social-btn zalo" href="https://zalo.me/{{ config_get('zalo') }}" target="_blank">
                 Zalo
             </a>
         </div>

@@ -18,8 +18,8 @@ img {
 
 .container {
     width: 100%;
-    padding-right: 5px;
-    padding-left: 5px;
+    padding-right: 1px;
+    padding-left: 1px;
     margin-right: auto;
     margin-left: auto;
 }
@@ -46,8 +46,8 @@ img {
     .category__list,
     .detail__images-list {
         display: grid;
-        grid-template-columns: 1fr;
-        gap: 20px;
+        grid-template-columns: 1fr 1fr;
+        gap: 5px;
     }
 
     /* Account Card Improvements */
@@ -60,7 +60,8 @@ img {
     .account-card__image,
     .service-card__image,
     .account-media {
-        height: 140px;
+        /* height: 100px; */
+         height: auto;
     }
 
     /* Buttons and Actions */

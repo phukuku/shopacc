@@ -1,12 +1,6 @@
 <?php
 
-/**
- * Copyright (c) 2025 FPT University
- *
- * @author    Phạm Hoàng Tuấn
- * @email     phamhoangtuanqn@gmail.com
- * @facebook  fb.com/phamhoangtuanqn
- */
+
 
 namespace App\Http\Controllers\User;
 
@@ -22,15 +16,39 @@ use Illuminate\Support\Facades\DB;
 
 class GameAccountController extends Controller
 {
-    public function show($id)
-    {
-        $account = GameAccount::findOrFail($id);
+public function show($id)
+{
+    $account = GameAccount::findOrFail($id);
 
-        // Convert JSON string to array or provide empty array if null
-        $images = json_decode($account->images) ?? [];
+    $images = json_decode($account->images) ?? [];
 
-        return view("user.account.detail", compact('account', 'images'));
-    }
+    $relatedAccounts = GameAccount::where(
+        'game_category_id',
+        $account->game_category_id
+    )
+    ->where('id', '!=', $account->id)
+    ->where('status', 'available')
+    ->latest()
+    ->take(10)
+    ->get();
+
+    $categoryCount = GameAccount::where(
+        'game_category_id',
+        $account->game_category_id
+    )
+    ->where('status', 'available')
+    ->count();
+
+    return view(
+        'user.account.detail',
+        compact(
+            'account',
+            'images',
+            'relatedAccounts',
+            'categoryCount'
+        )
+    );
+}
     public function showAllAcc(Request $request)
     {
         $title = 'Tất cả tài khoản game';
@@ -80,7 +98,7 @@ class GameAccountController extends Controller
 
         $accounts = $accounts->get();
 
-        return view('user.account.show-all', compact('title', 'accounts'));
+        return view('user.account.show-all', compact('title', 'accounts'))->with('totalAccounts', $accounts->count());
     }
 
 

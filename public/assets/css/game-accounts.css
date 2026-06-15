@@ -1,3 +1,104 @@
+/*tai khoan lien quan*/
+
+/* .related-section{
+    margin-top:30px;
+} */
+
+.related-title{
+    color: #1e88e5;
+    font-size: 16px;
+    font-weight: 600;
+    margin-bottom:15px;
+}
+
+.related-wrapper{
+    position:relative;
+}
+
+.related-grid{
+    display:flex!important ;
+    flex-wrap:nowrap !important;
+    gap:5px !important ;
+    overflow-x:auto;
+    scroll-behavior:smooth;
+    scrollbar-width:none;
+    -ms-overflow-style:none;
+    
+}
+
+
+.related-grid .account-note {
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+    overflow: hidden;
+    max-height: 57px;
+    height: 57px;
+}
+
+
+.related-grid::-webkit-scrollbar{
+    display:none;
+}
+
+.related-grid .account-card{
+    width:33.33%;
+    flex-shrink:0;
+    flex: 0 0 calc((100% - 10px)/3);
+}
+
+.related-grid .account-img{
+    height:100%;
+    object-fit:cover;
+}
+
+.slider-arrow{
+    position:absolute;
+    top:50%;
+    transform:translateY(-50%);
+    width:45px;
+    height:45px;
+    border:none;
+    border-radius:50%;
+    background:#fff;
+    box-shadow:0 3px 12px rgba(0,0,0,.15);
+
+    cursor:pointer;
+    z-index:10;
+}
+
+.slider-prev{
+    left:-22px;
+}
+
+.slider-next{
+    right:-22px;
+}
+
+.slider-arrow:hover{
+    background:#2563eb;
+    color:#fff;
+}
+@media (max-width:768px){
+
+    .slider-arrow{
+        top: 30%;
+    }
+   .related-grid .account-card{
+        flex:0 0 calc(50% - 5px);
+        max-width:calc(50% - 5px);
+        min-width:calc(50% - 5px);
+    }
+ 
+
+    .slider-prev{
+        left:5px;
+    }
+
+    .slider-next{
+        right:5px;
+    }
+}
 
 /* Game Account Cards Styling */
 .account-list {
@@ -12,8 +113,8 @@
 /* Grid Layout */
 .account-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-    gap: 25px;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 5px;
     margin-bottom: 40px;
 }
 
@@ -40,7 +141,7 @@
 .account-media {
     position: relative;
     width: 100%;
-    height: 220px;
+    /* height: 190px; */
     overflow: hidden;
 }
 
@@ -390,14 +491,39 @@
 }
 
 @media (max-width: 480px) {
+
+    /* .related-grid .account-note {
+      max-height: 45px;
+      height: 45px;
+} */
+
     .account-grid {
         grid-template-columns: 1fr;
         gap: 20px;
     }
-
-    .account-media {
-        height: 200px;
+    .account-actions {
+        display: block;
+        padding: 5px;
     }
+    
+    .card-note {
+        font-weight: 600;
+        font-size: 1.2rem;
+        display: -webkit-box;
+        -webkit-box-orient: vertical;
+        -webkit-line-clamp: 2;
+        overflow: hidden;
+        max-height: 56px;
+        height: 57px;
+
+    }
+    .account-code {
+        font-size: 1.1rem;      
+    }
+     .badge-new{
+        font-size: 1.1rem;      
+    }
+  
 
     .account-filter__actions {
         flex-direction: column;
