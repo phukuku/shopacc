@@ -89,7 +89,7 @@ class DashboardController extends Controller
             // Lấy thông tin các giao dịch gần đây
             $recentTransactions = MoneyTransaction::with('user')
                 ->orderBy('created_at', 'desc')
-                ->limit(10)
+                ->limit(5)
                 ->get();
 
             // Tổng hợp các giao dịch theo loại

@@ -6,7 +6,7 @@
             <div class="page-header">
                 <div class="page-title">
                     <h4>Lịch sử giao dịch tiền</h4>
-                    <h6>Xem tất cả lịch sử giao dịch tiền của hệ thống</h6>
+                    <h6>Xem tất cả lịch sử giao dịch tiền của hệ thống </h6>
                 </div>
             </div>
 
