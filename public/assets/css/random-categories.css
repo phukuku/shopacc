@@ -3,8 +3,8 @@
 
 .category__list {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-    gap: 30px;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 5px;
 }
 
 .category__item {
@@ -43,7 +43,7 @@
     font-size: 2rem;
     font-weight: 700;
     color: #333;
-    margin: 25px 0 15px;
+    margin: 25px 0 0px;
     text-align: center;
     padding: 0 20px;
     text-transform: uppercase;
@@ -128,15 +128,15 @@
 
     .category__title {
         font-size: 1.8rem;
-        margin: 20px 0 10px;
+        /* margin: 20px 0 10px; */
     }
 
 }
 
 @media (max-width: 480px) {
-    .category__list {
+    /* .category__list {
         grid-template-columns: 1fr;
-    }
+    } */
 
     .category__img {
         height: 140px;

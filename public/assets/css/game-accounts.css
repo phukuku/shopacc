@@ -236,7 +236,7 @@
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     /* gap: 60px; */
-    padding: 15px;
+    padding: 5px;
     margin-top: auto;
     border-top: 1px solid #eaeaea;
 }
@@ -492,10 +492,11 @@
 
 @media (max-width: 480px) {
 
-    /* .related-grid .account-note {
-      max-height: 45px;
-      height: 45px;
-} */
+   .related-grid .account-note {
+      max-height: 39px;
+      height: 39px;
+      
+}
 
     .account-grid {
         grid-template-columns: 1fr;
@@ -511,12 +512,14 @@
         font-size: 1.2rem;
         display: -webkit-box;
         -webkit-box-orient: vertical;
-        -webkit-line-clamp: 2;
+        -webkit-line-clamp: 1;
         overflow: hidden;
-        max-height: 56px;
-        height: 57px;
-
+        max-height: 36px;
+        line-height: 1.9;
+        height: 37px;
+        padding: 10px 0;
     }
+    
     .account-code {
         font-size: 1.1rem;      
     }

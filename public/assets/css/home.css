@@ -192,11 +192,11 @@
 }
 
 /* Category List */
-.category__list {
+/* .category__list {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(270px, 1fr));
     gap: 25px;
-}
+} */
 
 .category__item {
     display: flex;
@@ -244,7 +244,7 @@
     flex-wrap: wrap;
     justify-content: center;
     gap: 8px;
-    margin: 15px;
+    margin: 5px;
     min-height: 50px;
     align-items: center;
 }

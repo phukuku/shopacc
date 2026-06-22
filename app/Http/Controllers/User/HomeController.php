@@ -28,7 +28,7 @@ class HomeController extends Controller
     public function index()
     {
         // Dang mục bán acc game
-        $categories = Category::where('active', 1)->orderBy('updated_at', 'desc')->get();
+        $categories = Category::where('active', 1)->orderBy('id', 'asc')->get();
         foreach ($categories as $category) {
             $category->soldCount = GameAccount::where('game_category_id', $category->id)
                 ->where('status', 'sold')

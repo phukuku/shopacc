@@ -115,8 +115,8 @@
                         <img src="{{ $category->thumbnail }}" alt="{{ $category->name }}" class="category__img" />
                         <h2 class="category__title">{{ $category->name }}</h2>
                         <div class="category__stats">
-                            <span class="badge">{{ number_format($category->allAccount) }} Tài khoản</span>
-                            <span class="badge">Đã bán: {{ number_format($category->soldCount) }}</span>
+                            <span class="badge">Đang còn {{ number_format($category->allAccount) }} tài khoản</span>
+                            <!-- <span class="badge">Đã bán: {{ number_format($category->soldCount) }}</span> -->
                         </div>
                         <p class="category__action">XEM CHI TIẾT</p>
                     </a>

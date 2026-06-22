@@ -55,23 +55,23 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 
     // Handle scroll behavior
-    let lastScrollTop = 0;
+    // let lastScrollTop = 0;
 
-    window.addEventListener('scroll', function() {
-        // Only apply if the window width is mobile size
-        if (window.innerWidth <= 768) {
-            const currentScroll = window.pageYOffset || document.documentElement.scrollTop;
+    // window.addEventListener('scroll', function() {
+    //     // Only apply if the window width is mobile size
+    //     if (window.innerWidth <= 768) {
+    //         const currentScroll = window.pageYOffset || document.documentElement.scrollTop;
 
-            // Scrolling down
-            if (currentScroll > lastScrollTop && currentScroll > 150) {
-                mobileMenu.style.transform = 'translateY(100%)';
-            }
-            // Scrolling up
-            else {
-                mobileMenu.style.transform = 'translateY(0)';
-            }
+    //         // Scrolling down
+    //         if (currentScroll > lastScrollTop && currentScroll > 150) {
+    //             mobileMenu.style.transform = 'translateY(100%)';
+    //         }
+    //         // Scrolling up
+    //         else {
+    //             mobileMenu.style.transform = 'translateY(0)';
+    //         }
 
-            lastScrollTop = currentScroll <= 0 ? 0 : currentScroll;
-        }
-    }, { passive: true });
+    //         lastScrollTop = currentScroll <= 0 ? 0 : currentScroll;
+    //     }
+    // }, { passive: true });
 });
